@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { BsArrowRight } from "react-icons/bs";
 
-import { fadeIn } from "../../variants";
 import { useState } from "react";
 
 const Contact = () => {
@@ -31,7 +30,6 @@ const Contact = () => {
         <div className="flex flex-col w-full max-w-[700px]">
           {/* text */}
           <motion.h2
-            variants={fadeIn("up", 0.2)}
             initial="hidden"
             animate="show"
             exit="hidden"
@@ -42,7 +40,6 @@ const Contact = () => {
 
           {/* form */}
           <motion.form
-            variants={fadeIn("up", 0.4)}
             initial="hidden"
             animate="show"
             exit="hidden"
