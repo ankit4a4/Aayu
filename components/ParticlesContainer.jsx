@@ -12,7 +12,7 @@ const ParticlesContainer = () => {
 
   return (
     <Particles
-      className="w-full h-full absolute translate-z-0"
+      className="w-full h-full absolute translate-z-0 z-1"
       id="tsparticles"
       init={particlesInit}
       loaded={particlesLoaded}
@@ -48,10 +48,10 @@ const ParticlesContainer = () => {
         },
         particles: {
           color: {
-            value: "#e68e2e",
+            value: "#8B5A2B",
           },
           links: {
-            color: "#f5d393",
+            color: "#9C661F",
             distance: 150,
             enable: true,
             opacity: 0.5,

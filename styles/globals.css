@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+
+.backgroundImageset {
+  
+}
 .translate-z-0 {
   transform: translateZ(0px);
 }

@@ -4,16 +4,14 @@ import {
   RiYoutubeLine,
   RiInstagramLine,
   RiFacebookLine,
-  RiDribbbleLine,
-  RiGithubLine,
-  RiPinterestLine,
+  RiWhatsappLine 
 } from "react-icons/ri";
 
 export const socialData = [
-  {
-    name: "YouTube",
-    link: "https://youtube.com",
-    Icon: RiYoutubeLine,
+    {
+    name: "Whatsapp",
+    link: "#",
+    Icon: RiWhatsappLine,
   },
   {
     name: "Instagram",
@@ -24,27 +22,13 @@ export const socialData = [
     name: "Facebook",
     link: "https://facebook.com",
     Icon: RiFacebookLine,
-  },
-  {
-    name: "Dribbble",
-    link: "https://dribbble.com",
-    Icon: RiDribbbleLine,
-  },
-  {
-    name: "Pinterest",
-    link: "https://pinterest.com",
-    Icon: RiPinterestLine,
-  },
-  {
-    name: "Github",
-    link: "https://github.com/sanidhyy/modern-portfolio",
-    Icon: RiGithubLine,
-  },
+  }
+
 ];
 
 const Socials = () => {
   return (
-    <div className="flex items-center gap-x-5 text-lg">
+    <div className="flex items-center gap-x-[2vh] md:gap-x-[2vw] text-[2.5vh] md:text-[1vw] md:pr-[2vw] relative z-[55]">
       {socialData.map((social, i) => (
         <Link
           key={i}
@@ -53,12 +37,15 @@ const Socials = () => {
           target="_blank"
           rel="noreferrer noopener"
           className={`${
-            social.name === "Github"
-              ? "bg-accent rounded-full p-[5px] hover:text-white"
-              : "hover:text-accent"
-          } transition-all duration-300`}
+            social.name === "ss"
+              ? "bg-[#25d366]  rounded-full cursor-pointer z-50 p-[1vh] md:p-[1vw] hover:text-white"
+              : "hover:text-accent z-[523232] cursor-pointer"
+          } transition-all duration-300  cursor-pointer`}
         >
-          <social.Icon aria-hidden />
+          <social.Icon
+            aria-hidden
+            className="text-[3vh] md:text-[2vw]" // icon sizing
+          />
           <span className="sr-only">{social.name}</span>
         </Link>
       ))}

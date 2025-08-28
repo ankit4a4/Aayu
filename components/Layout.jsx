@@ -1,9 +1,10 @@
 import { Sora } from "next/font/google";
 import Head from "next/head";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 import Header from "../components/Header";
 import Nav from "../components/Nav";
-import TopLeftImg from "../components/TopLeftImg";
 
 // setup font
 const sora = Sora({
@@ -14,30 +15,32 @@ const sora = Sora({
 
 const Layout = ({ children }) => {
   return (
-    <main
-      className={`page bg-site text-white bg-cover bg-no-repeat ${sora.variable} font-sora relative`}
-    >
+    <main className={`text-black bg-white font-sora relative  min-h-screen`}>
+      {/* Background Image */}
+      <div
+        className="absolute inset-0"
+        style={{
+          backgroundImage: "url(bg.jpg)",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          opacity: 0.5,
+          zIndex: 1,
+        }}
+      ></div>
+
       {/* metadata */}
       <Head>
-        <title>Ethan Smith | Portfolio</title>
-        <meta
-          name="description"
-          content="Ethan Smith is a Full-stack web developer with 10+ years of experience."
-        />
-        <meta
-          name="keywords"
-          content="react, next, nextjs, html, css, javascript, js, modern-ui, modern-ux, portfolio, framer-motion, 3d-website, particle-effect"
-        />
-        <meta name="author" content="Sanidhya Kumar Verma" />
+        <title>Aayu Yog Amrit</title>
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <meta name="author" content="" />
         <meta name="theme-color" content="#f13024" />
       </Head>
 
-      <TopLeftImg />
       <Nav />
       <Header />
 
-      {/* main content */}
-      {children}
+      <div className="z-2">{children}</div>
     </main>
   );
 };
