@@ -31,7 +31,6 @@ const Work = () => {
             </motion.p>
           </div>
 
-          {/* slider */}
           <motion.div
             initial="hidden"
             animate="show"
