@@ -67,7 +67,7 @@ const Product = () => {
           slidesToShow: 1,
           slidesToScroll: 1,
           infinite: true,
-          dots: true,  // Mobile dots enabled
+          dots: true, // Mobile dots enabled
           arrows: false,
         },
       },
