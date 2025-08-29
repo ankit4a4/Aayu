@@ -67,7 +67,7 @@ const Product = () => {
           slidesToShow: 1,
           slidesToScroll: 1,
           infinite: true,
-          dots: true,
+          dots: true, // Mobile dots enabled
           arrows: false,
         },
       },
@@ -75,7 +75,7 @@ const Product = () => {
   };
 
   return (
-    <div className="min-h-screen w-full md:w-[80vw] mx-auto relative z-[51] flex flex-col items-center justify-center px-4 md:px-[4vw] py-[3vh] md:py-[5vw]">
+    <div className="min-h-screen w-full md:w-[80vw] mx-auto relative z-[53] flex flex-col items-center justify-center px-4 md:px-[4vw] py-[3vh] md:py-[5vw]">
       {/* Heading */}
       <motion.h1
         initial={{ y: -4 }}
