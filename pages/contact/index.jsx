@@ -55,7 +55,7 @@ const Contact = () => {
                 type="text"
                 name="name"
                 placeholder="Name"
-                className="input p-[1.5vh] md:p-[0.8vw] text-[2.2vh] md:text-[1.2vw] rounded-[1vh] md:rounded-[0.5vw] text-black  placeholder-black border-gray-400 focus:outline-none"
+                className="input p-[0.7vh] md:p-[0.8vw] text-[2.2vh] md:text-[1.2vw] rounded-[1vh] md:rounded-[0.5vw] text-black  placeholder-black border-gray-400 focus:outline-none"
                 disabled={isLoading}
                 aria-disabled={isLoading}
                 required
@@ -65,7 +65,7 @@ const Contact = () => {
                 type="email"
                 name="email"
                 placeholder="E-mail"
-                className="input p-[1.5vh] md:p-[0.8vw] text-[2.2vh] md:text-[1.2vw] rounded-[1vh] md:rounded-[0.5vw] text-black placeholder-black border border-gray-400 focus:outline-none"
+                className="input p-[0.7vh] md:p-[0.8vw] text-[2.2vh] md:text-[1.2vw] rounded-[1vh] md:rounded-[0.5vw] text-black placeholder-black border border-gray-400 focus:outline-none"
                 disabled={isLoading}
                 aria-disabled={isLoading}
                 required
@@ -77,7 +77,7 @@ const Contact = () => {
               type="text"
               name="subject"
               placeholder="Subject"
-              className="input p-[1.5vh] md:p-[0.8vw] text-[2.2vh] md:text-[1.2vw] rounded-[1vh] md:rounded-[0.5vw] text-black border placeholder-black border-gray-400 focus:outline-none"
+              className="input p-[0.7vh] md:p-[0.8vw] text-[2.2vh] md:text-[1.2vw] rounded-[1vh] md:rounded-[0.5vw] text-black border placeholder-black border-gray-400 focus:outline-none"
               disabled={isLoading}
               aria-disabled={isLoading}
               required
@@ -86,7 +86,7 @@ const Contact = () => {
             <textarea
               name="message"
               placeholder="Message..."
-              className="textarea p-[1.5vh] md:p-[0.8vw] text-[2.2vh] md:text-[1.2vw] rounded-[1vh] md:rounded-[0.5vw] text-black border placeholder-black border-gray-400 focus:outline-none"
+              className="textarea p-[0.7vh] md:p-[0.8vw] text-[2.2vh] md:text-[1.2vw] rounded-[1vh] md:rounded-[0.5vw] text-black border h-[50px] md:h-auto placeholder-black border-gray-400 focus:outline-none"
               disabled={isLoading}
               aria-disabled={isLoading}
               required
@@ -94,7 +94,7 @@ const Contact = () => {
             />
             <button
               type="submit"
-              className="btn rounded-[5vh] md:rounded-[2vw] border border-black max-w-[40vh] md:max-w-[15vw] px-[4vh] md:px-[1.5vw] py-[2vh] md:py-[1vw] transition-all duration-300 flex items-center justify-center overflow-hidden placeholder-black hover:border-accent group relative text-[2.2vh] md:text-[1.2vw] text-black"
+              className="btn rounded-[5vh] md:rounded-[2vw] border border-black max-w-[40vh]  px-[10vh] md:px-[3vw] py-[2vh] md:py-[1vw] transition-all duration-300 flex items-center justify-center overflow-hidden mx-auto  placeholder-black hover:border-accent group relative text-[2.2vh] md:text-[1.2vw] text-black"
               disabled={isLoading}
               aria-disabled={isLoading}
             >
