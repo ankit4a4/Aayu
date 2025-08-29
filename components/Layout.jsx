@@ -23,7 +23,7 @@ const Layout = ({ children }) => {
           backgroundImage: "url(bg.jpg)",
           backgroundSize: "cover",
           backgroundPosition: "center",
-          opacity: 0.5,
+          opacity: 0.8,
           zIndex: 1,
         }}
       ></div>

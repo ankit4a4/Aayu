@@ -1,4 +1,5 @@
 "use client";
+import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -33,58 +34,63 @@ const products = [
 ];
 
 const Product = () => {
-  const settings = {
-  dots: true,
-  infinite: true,
-  speed: 800,
-  slidesToShow: 3,
-  slidesToScroll: 1,
-  autoplay: true,
-  autoplaySpeed: 4000,
-  arrows: true,
-  responsive: [
-    {
-      breakpoint: 1024,
-      settings: {
-        slidesToShow: 2,
-        slidesToScroll: 1,
-        infinite: true,
-        dots: true,
-        arrows: true,
-      },
-    },
-    {
-      breakpoint: 768,
-      settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        infinite: true,
-        dots: false,
-        arrows: false,
-      },
-    },
-  ],
-};
+  const sliderRef = useRef(null);
 
+  useEffect(() => {
+    // Trigger slider resize after mount
+    sliderRef.current?.slickGoTo(0);
+  }, []);
+
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 800,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 4000,
+    arrows: true,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true,
+          arrows: true,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true,  // Mobile dots enabled
+          arrows: false,
+        },
+      },
+    ],
+  };
 
   return (
-    <div className="min-h-screen md:w-[80vw]  mx-auto relative z-[53] flex flex-col items-center justify-center px-[4vh] md:px-[4vw] py-[3vh] md:py-[5vw]">
+    <div className="min-h-screen w-full md:w-[80vw] mx-auto relative z-[53] flex flex-col items-center justify-center px-4 md:px-[4vw] py-[3vh] md:py-[5vw]">
       {/* Heading */}
       <motion.h1
         initial={{ y: -4 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.6 }}
-        className="text-[4vh] md:text-[4vw] font-bold text-black mb-[3vh] md:mb-[3vw] text-center"
+        className="text-[4vh] md:text-[4vw] font-bold text-black mb-[8vh] md:mb-[3vw] text-center"
       >
         Ayurvedic <span className="text-green-500">Products</span>
       </motion.h1>
 
       {/* Slider */}
-
-      <div className="w-full">
-        <Slider {...settings}>
+      <div className="w-full max-w-[1200px]">
+        <Slider ref={sliderRef} {...settings}>
           {products.map((item, i) => (
-            <div key={i} className="px-[2vh] md:px-[1vw]">
+            <div key={i} className="px-2 md:px-4">
               <motion.div
                 initial={{ opacity: 0, y: 4 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -92,7 +98,7 @@ const Product = () => {
                 className="group relative bg-white/10 backdrop-blur-xl rounded-[3vh] md:rounded-[1vw] 
                            border border-white/20 flex flex-col items-center text-center
                            hover:scale-105 hover:shadow-2xl transition-all duration-300
-                            md:max-w-[22vw] mx-auto  md:h-[28vw] overflow-hidden"
+                           md:max-w-[22vw] mx-auto h-[45vh] md:h-[28vw] overflow-hidden"
               >
                 {/* Glow on Hover */}
                 <div className="absolute inset-0 rounded-[3vh] md:rounded-[1vw] bg-gradient-to-tr from-green-400/40 to-yellow-300/40 opacity-0 group-hover:opacity-100 blur-[1vh] md:blur-[0.3vw] transition duration-500"></div>
@@ -102,7 +108,7 @@ const Product = () => {
                   <img
                     src={item.img}
                     alt={item.name}
-                    className="w-full h-[200] md:h-full object-cover rounded-t-[3vh] md:rounded-t-[1vw] transition-all duration-300"
+                    className="w-full h-full object-cover rounded-t-[3vh] md:rounded-t-[1vw] transition-all duration-300"
                   />
                 </div>
 
