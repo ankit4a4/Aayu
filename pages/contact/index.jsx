@@ -25,7 +25,7 @@ const Contact = () => {
 
   return (
     <div className="h-full relative z-[51]">
-      <div className="mx-auto py-[5vh] md:py-[5vw] text-center xl:text-left flex items-center justify-center h-full">
+      <div className="mx-auto py-[20vh] px-3 md:py-[5vw] text-center xl:text-left flex items-center justify-center h-full">
         {/* text & form */}
         <div className="flex flex-col w-full max-w-[90vh] md:max-w-[50vw]">
           {/* text */}
