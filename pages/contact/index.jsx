@@ -1,6 +1,6 @@
+"use client";
 import { motion } from "framer-motion";
 import { BsArrowRight } from "react-icons/bs";
-
 import { useState } from "react";
 
 const Contact = () => {
@@ -24,18 +24,18 @@ const Contact = () => {
   };
 
   return (
-    <div className="h-full bg-primary/30">
-      <div className=" mx-auto py-32 text-center xl:text-left flex items-center justify-center h-full">
+    <div className="h-full relative z-[51]">
+      <div className="mx-auto py-[5vh] md:py-[5vw] text-center xl:text-left flex items-center justify-center h-full">
         {/* text & form */}
-        <div className="flex flex-col w-full max-w-[700px]">
+        <div className="flex flex-col w-full max-w-[90vh] md:max-w-[50vw]">
           {/* text */}
           <motion.h2
             initial="hidden"
             animate="show"
             exit="hidden"
-            className="h2 text-center mb-12"
+            className="text-[5vh] md:text-[4vw] font-bold text-black mb-[6vh] md:mb-[3vw]"
           >
-            Let's <span className="text-accent">connect.</span>
+            Let's <span className="text-black">connect.</span>
           </motion.h2>
 
           {/* form */}
@@ -43,20 +43,19 @@ const Contact = () => {
             initial="hidden"
             animate="show"
             exit="hidden"
-            className="flex-1 flex flex-col gap-6 w-full mx-auto"
+            className="flex-1 flex flex-col gap-[2vh] md:gap-[1vw] w-full mx-auto"
             onSubmit={handleSubmit}
             autoComplete="off"
             autoCapitalize="off"
-            // only needed for production (in netlify) to accept form input
             data-netlify="true"
           >
             {/* input group */}
-            <div className="flex gap-x-6 w-full">
+            <div className="flex flex-col md:flex-row gap-[2vh] md:gap-[1vw] w-full">
               <input
                 type="text"
                 name="name"
                 placeholder="Name"
-                className="input"
+                className="input p-[1.5vh] md:p-[0.8vw] text-[2.2vh] md:text-[1.2vw] rounded-[1vh] md:rounded-[0.5vw] text-black  placeholder-black border-gray-400 focus:outline-none"
                 disabled={isLoading}
                 aria-disabled={isLoading}
                 required
@@ -66,18 +65,19 @@ const Contact = () => {
                 type="email"
                 name="email"
                 placeholder="E-mail"
-                className="input"
+                className="input p-[1.5vh] md:p-[0.8vw] text-[2.2vh] md:text-[1.2vw] rounded-[1vh] md:rounded-[0.5vw] text-black placeholder-black border border-gray-400 focus:outline-none"
                 disabled={isLoading}
                 aria-disabled={isLoading}
                 required
                 aria-required
               />
             </div>
+
             <input
               type="text"
               name="subject"
               placeholder="Subject"
-              className="input"
+              className="input p-[1.5vh] md:p-[0.8vw] text-[2.2vh] md:text-[1.2vw] rounded-[1vh] md:rounded-[0.5vw] text-black border placeholder-black border-gray-400 focus:outline-none"
               disabled={isLoading}
               aria-disabled={isLoading}
               required
@@ -86,7 +86,7 @@ const Contact = () => {
             <textarea
               name="message"
               placeholder="Message..."
-              className="textarea"
+              className="textarea p-[1.5vh] md:p-[0.8vw] text-[2.2vh] md:text-[1.2vw] rounded-[1vh] md:rounded-[0.5vw] text-black border placeholder-black border-gray-400 focus:outline-none"
               disabled={isLoading}
               aria-disabled={isLoading}
               required
@@ -94,7 +94,7 @@ const Contact = () => {
             />
             <button
               type="submit"
-              className="btn rounded-full border border-white/50 max-w-[170px] px-8 transition-all duration-300 flex items-center justify-center overflow-hidden hover:border-accent group"
+              className="btn rounded-[5vh] md:rounded-[2vw] border border-black max-w-[40vh] md:max-w-[15vw] px-[4vh] md:px-[1.5vw] py-[2vh] md:py-[1vw] transition-all duration-300 flex items-center justify-center overflow-hidden placeholder-black hover:border-accent group relative text-[2.2vh] md:text-[1.2vw] text-black"
               disabled={isLoading}
               aria-disabled={isLoading}
             >
@@ -103,7 +103,7 @@ const Contact = () => {
               </span>
 
               <BsArrowRight
-                className="-translate-y-[120%] opacity-0 group-hover:flex group-hover:-translate-y-0 group-hover:opacity-100 transition-all duration-300 absolute text-[22px]"
+                className="-translate-y-[120%] opacity-0 group-hover:flex group-hover:-translate-y-0 group-hover:opacity-100 transition-all duration-300 absolute text-[3vh] md:text-[1.5vw]"
                 aria-hidden
               />
             </button>

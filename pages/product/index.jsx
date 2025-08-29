@@ -49,13 +49,13 @@ const Product = () => {
   };
 
   return (
-    <div className="min-h-screen md:w-[80%] mx-auto relative z-[53] flex flex-col items-center justify-center px-4 py-10">
+    <div className="min-h-screen md:w-[80vw] w-[90vh] mx-auto relative z-[53] flex flex-col items-center justify-center px-[4vh] md:px-[4vw] py-[3vh] md:py-[5vw]">
       {/* Heading */}
       <motion.h1
-        initial={{ y: -40, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
+        initial={{ y: -4 }}
+        animate={{ y: 0 }}
         transition={{ duration: 0.6 }}
-        className="text-2xl md:text-4xl font-bold text-black mb-8 text-center"
+        className="text-[5vh] md:text-[4vw] font-bold text-black mb-[8vh] md:mb-[3vw] text-center"
       >
         Ayurvedic <span className="text-green-500">Products</span>
       </motion.h1>
@@ -64,34 +64,34 @@ const Product = () => {
       <div className="w-full">
         <Slider {...settings}>
           {products.map((item, i) => (
-            <div key={i} className="px-2">
+            <div key={i} className="px-[2vh] md:px-[1vw]">
               <motion.div
-                initial={{ opacity: 0, y: 40 }}
+                initial={{ opacity: 0, y: 4 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
-                className="group relative bg-white/10 backdrop-blur-xl rounded-2xl shadow-lg 
+                className="group relative bg-white/10 backdrop-blur-xl rounded-[3vh] md:rounded-[1vw] 
                            border border-white/20 flex flex-col items-center text-center
                            hover:scale-105 hover:shadow-2xl transition-all duration-300
-                           max-w-xs mx-auto h-96 overflow-hidden"
+                           max-w-[90vh] md:max-w-[22vw] mx-auto h-[45vh] md:h-[28vw] overflow-hidden"
               >
                 {/* Glow on Hover */}
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-tr from-green-400/40 to-yellow-300/40 opacity-0 group-hover:opacity-100 blur-lg transition duration-500"></div>
+                <div className="absolute inset-0 rounded-[3vh] md:rounded-[1vw] bg-gradient-to-tr from-green-400/40 to-yellow-300/40 opacity-0 group-hover:opacity-100 blur-[1vh] md:blur-[0.3vw] transition duration-500"></div>
 
                 {/* Image */}
-                <div className="relative w-full h-2/3">
+                <div className="relative w-full h-[66%]">
                   <img
                     src={item.img}
                     alt={item.name}
-                    className="w-full h-full object-cover rounded-t-2xl transition-all duration-300"
+                    className="w-full h-full object-cover rounded-t-[3vh] md:rounded-t-[1vw] transition-all duration-300"
                   />
                 </div>
 
                 {/* Content */}
-                <div className="relative z-10 p-4 h-1/3 flex flex-col justify-center">
-                  <h2 className="text-lg md:text-xl font-semibold text-gray-900 group-hover:text-green-600 transition-colors duration-300">
+                <div className="relative z-10 p-[2vh] md:p-[1vw] h-[34%] flex flex-col justify-center">
+                  <h2 className="text-[3vh] md:text-[2vw] font-semibold text-gray-900 group-hover:text-green-600 transition-colors duration-300">
                     {item.name}
                   </h2>
-                  <p className="text-gray-700 mt-2 text-sm leading-relaxed">
+                  <p className="text-gray-700 mt-[1vh] md:mt-[0.5vw] text-[2vh] md:text-[1.2vw] leading-relaxed">
                     {item.desc}
                   </p>
                 </div>
