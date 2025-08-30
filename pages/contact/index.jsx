@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import { BsArrowRight } from "react-icons/bs";
 import { useState } from "react";
+import ParticlesContainer from "../../components/ParticlesContainer";
 
 const Contact = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -24,6 +25,9 @@ const Contact = () => {
   };
 
   return (
+    <>
+     <ParticlesContainer />
+     
     <div className="h-full relative z-[51]">
       <div className="mx-auto py-[20vh] px-3 md:py-[5vw] text-center xl:text-left flex items-center justify-center h-full">
         {/* text & form */}
@@ -111,6 +115,7 @@ const Contact = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

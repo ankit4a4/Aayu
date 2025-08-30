@@ -9,11 +9,7 @@ import "swiper/css/pagination";
 import ParticlesContainer from "../../components/ParticlesContainer";
 
 const products = [
-  {
-    name: "Aayu Herbal Tea",
-    desc: "Boosts immunity & promotes relaxation with natural herbs.",
-    img: "https://doctorpizza.org/wp-content/uploads/2025/04/Herbal_Tea_Recipe_for_Lung_Detox.png",
-  },
+  
   {
     name: "Amrit Chyawanprash",
     desc: "Traditional ayurvedic formula for strength & vitality.",
@@ -78,7 +74,7 @@ export default function ProductSlider() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4 }}
-                className="group bg-[#ffffff34] backdrop:blur-2xl rounded-[3vh] md:rounded-[1.5vw] shadow-md border overflow-hidden flex flex-col"
+                className="group bg-[#ffffff] backdrop:blur-2xl rounded-[3vh] md:rounded-[1.5vw] shadow-md border overflow-hidden flex flex-col"
               >
                 <div className="w-full ">
                   <img
@@ -91,7 +87,7 @@ export default function ProductSlider() {
                   <h2 className="text-[2.2vh] md:text-[1.8vw] font-semibold text-gray-900 group-hover:text-green-600 transition-colors">
                     {item.name}
                   </h2>
-                  <p className="text-gray-600 text-[1.8vh] md:text-[1.2vw] mt-[0.8vh] md:mt-[0.4vw]">
+                  <p className="text-gray-900 font-[400] text-[1.8vh] md:text-[1.2vw] mt-[0.8vh] md:mt-[0.4vw]">
                     {item.desc}
                   </p>
                 </div>
