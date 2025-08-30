@@ -1,9 +1,12 @@
 "use client";
-import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, Autoplay, A11y } from "swiper/modules";
+
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import ParticlesContainer from "../../components/ParticlesContainer";
 
 const products = [
   {
@@ -33,101 +36,79 @@ const products = [
   },
 ];
 
-const Product = () => {
-  const sliderRef = useRef(null);
-
-  useEffect(() => {
-    // Trigger slider resize after mount
-    sliderRef.current?.slickGoTo(0);
-  }, []);
-
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 800,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 4000,
-    arrows: true,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-          infinite: true,
-          dots: true,
-          arrows: true,
-        },
-      },
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          infinite: true,
-          dots: true, // Mobile dots enabled
-          arrows: false,
-        },
-      },
-    ],
-  };
-
+export default function ProductSlider() {
   return (
-    <div className="min-h-screen w-full md:w-[80vw] mx-auto relative z-[53] flex flex-col items-center justify-center px-4 md:px-[4vw] py-[3vh] md:py-[5vw]">
-      {/* Heading */}
-      <motion.h1
-        initial={{ y: -4 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="text-[4vh] md:text-[4vw] font-bold text-black mb-[8vh] md:mb-[3vw] text-center"
-      >
-        Ayurvedic <span className="text-green-500">Products</span>
-      </motion.h1>
+    <>
 
-      {/* Slider */}
-      <div className="w-full max-w-[1200px]">
-        <Slider ref={sliderRef} {...settings}>
+    <ParticlesContainer />
+      <div className="min-h-screen relative z-[52] w-full flex flex-col items-center justify-center px-[2vw] py-[5vh]">
+        <motion.h1
+          initial={{ y: -2 }}
+          animate={{ y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-[4vh] md:text-[3vw] font-bold text-black mb-[4vh] md:mb-[3vw] text-center"
+        >
+          Ayurvedic <span className="text-green-500">Products</span>
+        </motion.h1>
+
+        <Swiper
+          modules={[Navigation, Pagination, Autoplay, A11y]}
+          loop={true}
+          speed={600}
+          spaceBetween={16}
+          grabCursor={true}
+          autoplay={{
+            delay: 3000, // 3s autoplay
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true,
+          }}
+          pagination={{ clickable: true }}
+          navigation={{ enabled: true }}
+          breakpoints={{
+            0: { slidesPerView: 1 }, // Mobile
+            768: { slidesPerView: 2 }, // Tablet
+            1024: { slidesPerView: 3 }, // Desktop
+          }}
+          className="w-full"
+        >
           {products.map((item, i) => (
-            <div key={i} className="px-2 md:px-4">
+            <SwiperSlide key={i}>
               <motion.div
-                initial={{ opacity: 0, y: 4 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 }}
-                className="group relative bg-white/10 backdrop-blur-xl rounded-[3vh] md:rounded-[1vw] 
-                           border border-white/20 flex flex-col items-center text-center
-                           hover:scale-105 hover:shadow-2xl transition-all duration-300
-                           md:max-w-[22vw] mx-auto h-[45vh] md:h-[28vw] overflow-hidden"
+                initial={{ opacity: 0, y: 1 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4 }}
+                className="group bg-[#ffffff34] backdrop:blur-2xl rounded-[3vh] md:rounded-[1.5vw] shadow-md border overflow-hidden flex flex-col"
               >
-                {/* Glow on Hover */}
-                <div className="absolute inset-0 rounded-[3vh] md:rounded-[1vw] bg-gradient-to-tr from-green-400/40 to-yellow-300/40 opacity-0 group-hover:opacity-100 blur-[1vh] md:blur-[0.3vw] transition duration-500"></div>
-
-                {/* Image */}
-                <div className="relative w-full h-[66%]">
+                <div className="w-full ">
                   <img
                     src={item.img}
                     alt={item.name}
-                    className="w-full h-full object-cover rounded-t-[3vh] md:rounded-t-[1vw] transition-all duration-300"
+                    className="w-full h-[50vh] object-cover"
                   />
                 </div>
-
-                {/* Content */}
-                <div className="relative z-10 p-[2vh] md:p-[1vw] h-[34%] flex flex-col justify-center">
-                  <h2 className="text-[3vh] md:text-[2vw] font-semibold text-gray-900 group-hover:text-green-600 transition-colors duration-300">
+                <div className="p-[2vh] md:p-[1vw] flex-1 flex flex-col justify-center text-center">
+                  <h2 className="text-[2.2vh] md:text-[1.8vw] font-semibold text-gray-900 group-hover:text-green-600 transition-colors">
                     {item.name}
                   </h2>
-                  <p className="text-gray-700 mt-[1vh] md:mt-[0.5vw] text-[2vh] md:text-[1.2vw] leading-relaxed">
+                  <p className="text-gray-600 text-[1.8vh] md:text-[1.2vw] mt-[0.8vh] md:mt-[0.4vw]">
                     {item.desc}
                   </p>
                 </div>
               </motion.div>
-            </div>
+            </SwiperSlide>
           ))}
-        </Slider>
-      </div>
-    </div>
-  );
-};
+        </Swiper>
 
-export default Product;
+        <style jsx global>{`
+          @media (max-width: 767px) {
+            .swiper-button-next,
+            .swiper-button-prev {
+              display: none !important;
+            }
+          }
+        `}</style>
+      </div>
+    </>
+  );
+}
