@@ -2,10 +2,9 @@ import { Sora } from "next/font/google";
 import Head from "next/head";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import "swiper/css";                // core styles
-import "swiper/css/navigation";     // navigation styles
-import "swiper/css/pagination";     // pagination styles
-import "swiper/css/autoplay";       // autoplay styles (optional)
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
 import Header from "../components/Header";
 import Nav from "../components/Nav";

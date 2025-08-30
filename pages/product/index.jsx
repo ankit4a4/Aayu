@@ -1,16 +1,13 @@
 "use client";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, Autoplay } from "swiper/modules";
-
-
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
+import Slider from "react-slick";
 import ParticlesContainer from "../../components/ParticlesContainer";
 
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
 const products = [
-  
   {
     name: "Amrit Chyawanprash",
     desc: "Traditional ayurvedic formula for strength & vitality.",
@@ -26,18 +23,32 @@ const products = [
     desc: "Detoxifies body and improves digestion naturally.",
     img: "https://www.awesomecuisine.com/wp-content/uploads/2018/12/Aloe_vera_Juice_resized.jpg",
   },
-  {
-    name: "Ashwagandha Powder",
-    desc: "Helps manage stress & boosts stamina.",
-    img: "https://www.vahdam.com/cdn/shop/products/AshwagandhaPowder-lifestyle_2048x2048.jpg?v=1678963108",
-  },
+
 ];
 
 export default function ProductSlider() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // Slick settings for mobile
+  const settings = {
+    dots: true,
+    arrows: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
+
   return (
     <>
-
-    <ParticlesContainer />
+      <ParticlesContainer />
       <div className="min-h-screen relative z-[52] w-full flex flex-col items-center justify-center px-[2vw] py-[5vh]">
         <motion.h1
           initial={{ y: -2 }}
@@ -48,40 +59,55 @@ export default function ProductSlider() {
           Ayurvedic <span className="text-green-500">Products</span>
         </motion.h1>
 
-        <Swiper
-          modules={[Navigation, Pagination, Autoplay, A11y]}
-          loop={true}
-          speed={600}
-          spaceBetween={16}
-          grabCursor={true}
-          autoplay={{
-            delay: 3000, // 3s autoplay
-            disableOnInteraction: false,
-            pauseOnMouseEnter: true,
-          }}
-          pagination={{ clickable: true }}
-          navigation={{ enabled: true }}
-          breakpoints={{
-            0: { slidesPerView: 1 }, // Mobile
-            768: { slidesPerView: 2 }, // Tablet
-            1024: { slidesPerView: 3 }, // Desktop
-          }}
-          className="w-full"
-        >
-          {products.map((item, i) => (
-            <SwiperSlide key={i}>
+        {isMobile ? (
+          // Mobile Slick Slider
+          <div className="w-full">
+            <Slider {...settings}>
+              {products.map((item, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4 }}
+                  className="mx-2 bg-white rounded-[3vh] shadow-md border overflow-hidden flex flex-col"
+                >
+                  <div className="w-full h-[40vh]">
+                    <img
+                      src={item.img}
+                      alt={item.name}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="p-[2vh] flex-1 flex flex-col justify-center text-center">
+                    <h2 className="text-[2.2vh] font-semibold text-gray-900 group-hover:text-green-600 transition-colors">
+                      {item.name}
+                    </h2>
+                    <p className="text-gray-900 font-[400] text-[1.8vh] mt-[0.8vh]">
+                      {item.desc}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
+            </Slider>
+          </div>
+        ) : (
+          // Desktop Grid
+          <div className="flex flex-wrap justify-center gap-6 w-full">
+            {products.map((item, i) => (
               <motion.div
-                initial={{ opacity: 0, y: 1 }}
+                key={i}
+                initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4 }}
-                className="group bg-[#ffffff] backdrop:blur-2xl rounded-[3vh] md:rounded-[1.5vw] shadow-md border overflow-hidden flex flex-col"
+                className="w-full sm:w-[45%] md:w-[30%] bg-white rounded-[3vh] md:rounded-[1.5vw] shadow-md border overflow-hidden flex flex-col"
               >
-                <div className="w-full ">
+                <div className="w-full h-[50vh] md:h-[40vh]">
                   <img
                     src={item.img}
                     alt={item.name}
-                    className="w-full h-[50vh] object-cover"
+                    className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="p-[2vh] md:p-[1vw] flex-1 flex flex-col justify-center text-center">
@@ -93,18 +119,9 @@ export default function ProductSlider() {
                   </p>
                 </div>
               </motion.div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-
-        <style jsx global>{`
-          @media (max-width: 767px) {
-            .swiper-button-next,
-            .swiper-button-prev {
-              display: none !important;
-            }
-          }
-        `}</style>
+            ))}
+          </div>
+        )}
       </div>
     </>
   );
