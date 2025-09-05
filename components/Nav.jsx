@@ -1,74 +1,193 @@
+"use client";
+import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-
-// icons
 import {
   HiHome,
   HiUser,
-  HiViewColumns,
   HiRectangleGroup,
-  HiChatBubbleBottomCenterText,
   HiEnvelope,
+  HiBars3,
 } from "react-icons/hi2";
+import { motion, AnimatePresence } from "framer-motion";
+import { FaHandPointDown } from "react-icons/fa";
+import { IoClose } from "react-icons/io5";
+import {
+  FaLinkedin,
+  FaInstagram,
+  FaTwitter,
+  FaFacebook,
+} from "react-icons/fa";
+import Image from "next/image";
 
-// nav data
-export const navData = [
-  { name: "home", path: "/", Icon: HiHome },
-  { name: "about", path: "/about", Icon: HiUser },
-  { name: "product", path: "/product", Icon: HiRectangleGroup },
-  // { name: "work", path: "/work", Icon: HiViewColumns },
-  // {
-  //   name: "testimonials",
-  //   path: "/testimonials",
-  //   Icon: HiChatBubbleBottomCenterText,
-  // },
-  {
-    name: "contact",
-    path: "/contact",
-    Icon: HiEnvelope,
-  },
+const links = [
+  { label: "Home", href: "/", Icon: HiHome },
+  { label: "About", href: "/about", Icon: HiUser },
+  { label: "Product", href: "/product", Icon: HiRectangleGroup },
+  { label: "Contact", href: "/contact", Icon: HiEnvelope },
 ];
 
 const Nav = () => {
   const pathname = usePathname();
+  const [open, setOpen] = useState(false);
 
   return (
-    <nav className="flex flex-col z-[53] items-center xl:justify-center gap-y-[2vh] xl:gap-y-[2vw] fixed h-max bottom-0 mt-auto xl:right-[2%] top-0 w-full xl:w-[4vw] xl:max-w-md xl:h-screen">
-      <div className="flex w-full xl:flex-col items-center justify-between xl:justify-center gap-y-[2.5vh] xl:gap-y-[2vw] px-[5vh] md:px-[8vh] xl:px-0 h-[10vh] xl:h-max py-[2vh] xl:py-[2vw] border border-[#9b9b9b] bg-white/10 backdrop-blur-sm text-[4vh] xl:text-[1.2vw] xl:rounded-full">
-        {navData.map((link, i) => (
-          <Link
-            className={`${
-              link.path === pathname && "text-accent"
-            } relative flex items-center group hover:text-accent transition-all duration-300`}
-            href={link.path}
-            key={i}
+    <>
+      {/* Desktop Sidebar (right side) */}
+      <aside className="hidden md:flex fixed top-0 right-0 h-[100vh] w-[6vw] bg-transparent flex-col items-center justify-between py-[6vh] z-[61]">
+        {/* Top Section */}
+        <div className="flex flex-col items-center">
+          <motion.div
+            className="mt-[2vh] mb-[1.5vh] text-gray-800"
+            animate={{ y: [0, -1.5, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
           >
-            {/* tooltip */}
-            <div
-              role="tooltip"
-              className="absolute pr-[4vh] xl:pr-[1.2vw] right-0 hidden xl:group-hover:flex"
-            >
-              <div className="bg-white relative flex text-primary items-center p-[1vh] xl:p-[0.5vw] rounded-[0.5vh] xl:rounded-[0.3vw]">
-                <div className="text-[1.7vh] md:text-[1.3vw] leading-none font-semibold capitalize">
-                  {link.name}
-                </div>
+            <FaHandPointDown className="text-[2vw]" />
+          </motion.div>
 
-                {/* triangle */}
-                <div
-                  className="border-solid border-l-white border-l-[1vh] xl:border-l-[0.6vw] border-y-transparent border-y-[0.8vh] xl:border-y-[0.4vw] border-r-0 absolute -right-[0.8vh] xl:-right-[0.4vw]"
-                  aria-hidden
-                />
+          <button
+            onClick={() => setOpen(true)}
+            className="mt-[1.5vw] font-bold text-gray-800 tracking-widest rotate-90 hover:text-accent transition-colors text-[1vw]"
+          >
+            MENUS
+          </button>
+        </div>
+
+        <div className="flex flex-col items-center justify-center flex-1">
+          <p className="text-[0.8vw] text-gray-600 rotate-90 whitespace-nowrap font-medium tracking-widest">
+            Empowering Security
+          </p>
+        </div>
+
+        <div className="flex flex-col items-center gap-[1.5vw] mb-[2vh]">
+          <a
+            href="https://linkedin.com"
+            target="_blank"
+            className="hover:text-accent transition-colors text-gray-700 text-[1.5vw]"
+          >
+            <FaLinkedin />
+          </a>
+          <a
+            href="https://instagram.com"
+            target="_blank"
+            className="hover:text-accent transition-colors text-gray-700 text-[1.5vw]"
+          >
+            <FaInstagram />
+          </a>
+          <a
+            href="https://twitter.com"
+            target="_blank"
+            className="hover:text-accent transition-colors text-gray-700 text-[1.5vw]"
+          >
+            <FaTwitter />
+          </a>
+          <a
+            href="https://facebook.com"
+            target="_blank"
+            className="hover:text-accent transition-colors text-gray-700 text-[1.5vw]"
+          >
+            <FaFacebook />
+          </a>
+        </div>
+      </aside>
+
+      {/* Mobile Header */}
+      <header className="flex md:hidden fixed top-0 left-0 w-[100vw] h-[8vh] bg-white/90 shadow-md flex items-center justify-between px-[4vw] z-[61]">
+        {/* Logo Image */}
+        <Image
+          src="/photos/black.png"
+          alt="Logo"
+          width={60}
+          height={60}
+          className="h-[6vh] w-auto"
+        />
+
+        {/* Hamburger */}
+        <button onClick={() => setOpen(true)} className="text-[4vh] text-gray-800">
+          <HiBars3 />
+        </button>
+      </header>
+
+      {/* Fullscreen Popup Menu */}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0, x: "100%" }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: "100%" }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
+            className="fixed inset-0 bg-black flex flex-col items-center justify-center gap-[8vh] z-[70] px-[6vw]"
+          >
+            {/* Cross Button */}
+            <button
+              onClick={() => setOpen(false)}
+              className="absolute top-[6vh] right-[8vw] text-white text-[7vh] md:text-[3vw] hover:text-accent transition-colors"
+            >
+              <IoClose />
+            </button>
+
+            {/* Menu Links */}
+            {links.map(({ label, href, Icon }, index) => {
+              const isActive = pathname === href;
+              return (
+                <motion.div
+                  key={index}
+                  initial={{ x: -8, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ delay: index * 0.15 }}
+                >
+                  <Link
+                    href={href}
+                    onClick={() => setOpen(false)}
+                    className={`flex items-center gap-[6vw] text-[5vh] md:text-[2.5vw] font-bold transition-colors ${
+                      isActive ? "text-accent" : "text-white hover:text-accent"
+                    }`}
+                  >
+                    <Icon className="text-[6vh] md:text-[3vw]" />
+                    {label}
+                  </Link>
+                </motion.div>
+              );
+            })}
+
+            {/* Bottom Section in Popup (Mobile only) */}
+            <div className="absolute bottom-[10vh] flex flex-col items-center gap-[6vh] md:hidden">
+              {/* Social Icons */}
+              <div className="flex gap-[6vw]">
+                <a
+                  href="https://linkedin.com"
+                  target="_blank"
+                  className="text-white text-[5vh] hover:text-accent transition-transform hover:scale-110"
+                >
+                  <FaLinkedin />
+                </a>
+                <a
+                  href="https://instagram.com"
+                  target="_blank"
+                  className="text-white text-[5vh] hover:text-accent transition-transform hover:scale-110"
+                >
+                  <FaInstagram />
+                </a>
+                <a
+                  href="https://twitter.com"
+                  target="_blank"
+                  className="text-white text-[5vh] hover:text-accent transition-transform hover:scale-110"
+                >
+                  <FaTwitter />
+                </a>
+                <a
+                  href="https://facebook.com"
+                  target="_blank"
+                  className="text-white text-[5vh] hover:text-accent transition-transform hover:scale-110"
+                >
+                  <FaFacebook />
+                </a>
               </div>
             </div>
-
-            {/* icon */}
-            <div>
-              <link.Icon className="md:text-[1.8vw]" assria-hidden />
-            </div>
-          </Link>
-        ))}
-      </div>
-    </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 };
 

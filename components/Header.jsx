@@ -1,38 +1,43 @@
+"use client";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
-import Link from "next/link";
-import logo from "../public/photos/black.png";
-
-import Socials from "../components/Socials";
-import { useRouter } from "next/router";
 
 const Header = () => {
-  const router = useRouter()
-  return (
-    <header className="absolute z-[59] w-full items-center px-[2vh] md:px-[2vw] h-[8vh] md:h-[8vw]">
-      <div className="mx-auto">
-        <div className="flex flex-col lg:flex-row justify-between items-center gap-y-[2vh] md:gap-y-[2vw] py-[2vh] md:py-[2vw]">
-          {/* logo with glass circle */}
-          <Link href="/">
-            <div className="relative cursor-pointer flex items-center justify-center rounded-full 
-              bg-white/50 backdrop-blur-md border border-white/30 
-              w-[10vh] h-[10vh] md:w-[7vw] md:h-[7vw] shadow-lg">
-              <Image
-                src={logo}
-                alt="logo"
-                width={60}
-                height={30}
-                priority
-                onclick={() => router.push("/")}
-                className="h-[6vh] md:h-[4vw] w-auto object-contain"
-              />
-            </div>
-          </Link>
+  const router = useRouter();
 
-          {/* socials */}
-          <Socials />
+  return (
+    <section>
+      {/* Left Sidebar */}
+      <aside className="hidden md:flex fixed top-0 left-[-7%] h-[100vh] w-[20vw] bg-transparent flex-col items-center justify-between py-[6vh] z-[60]">
+        {/* Top: Logo with Glass Circle */}
+        <div
+          className="cursor-pointer flex justify-center w-full"
+          onClick={() => router.push("/")}
+        >
+          {/* Glass Circle */}
+          <div className="w-[20vw] h-[20vw] md:w-[5vw] md:h-[5vw] rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center shadow-lg">
+            <Image
+              src="/photos/black.png"
+              alt="Logo"
+              width={50}
+              height={50}
+              className="mx-auto h-[70%] w-[70%] object-contain"
+            />
+          </div>
         </div>
-      </div>
-    </header>
+
+        {/* Center: Contact Info (Gmail + Phone) */}
+        <div className="flex flex-col items-center justify-center flex-1 gap-[48vh] md:gap-[12vw]">
+          <p className="text-[2vh] md:text-[1vw] text-gray-700 -rotate-90 whitespace-nowrap font-semibold tracking-widest">
+            info@aayu.com
+          </p>
+
+          <p className="text-[2vh] md:text-[1vw] text-gray-700 -rotate-90 whitespace-nowrap font-semibold tracking-widest">
+            +91 98765 43210
+          </p>
+        </div>
+      </aside>
+    </section>
   );
 };
 

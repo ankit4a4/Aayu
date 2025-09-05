@@ -1,9 +1,8 @@
 import { useCallback } from "react";
-import { Particles } from "react-tsparticles";
+import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
 
 const ParticlesContainer = () => {
-  // init
   const particlesInit = useCallback(async (engine) => {
     await loadFull(engine);
   }, []);
@@ -12,82 +11,56 @@ const ParticlesContainer = () => {
 
   return (
     <Particles
-      className="w-full h-full absolute translate-z-0 z-1"
+      className="w-full h-full absolute translate-z-0 z-[49]"
       id="tsparticles"
       init={particlesInit}
       loaded={particlesLoaded}
       options={{
         fullScreen: { enable: false },
-        background: {
-          color: {
-            value: "",
-          },
-        },
-        fpsLimit: 120,
+        background: { color: { value: "" } },
+        fpsLimit: 60,
         interactivity: {
-          events: {
-            onClick: {
-              enable: false,
-              mode: "push",
-            },
-            onHover: {
-              enable: true,
-              mode: "repulse",
-            },
-            resize: true,
-          },
-          modes: {
-            push: {
-              quantity: 90,
-            },
-            repulse: {
-              distance: 200,
-              duration: 0.4,
-            },
-          },
+          events: { resize: true },
         },
         particles: {
-          color: {
-            value: "#8B5A2B",
-          },
-          links: {
-            color: "#9C661F",
-            distance: 150,
-            enable: true,
-            opacity: 0.5,
-            width: 1,
-          },
-          collisions: {
-            enable: true,
+          number: {
+            value: 30, // thoda zyada petals
+            density: { enable: true, area: 800 },
           },
           move: {
-            direction: "none",
+            direction: "bottom",
             enable: true,
-            outMode: {
-              default: "bounce",
-            },
-            random: false,
-            speed: 1,
+            speed: { min: 0.3, max: 1.2 }, // random speed
+            outModes: { default: "out" },
             straight: false,
           },
-          number: {
-            density: {
-              enable: true,
-              area: 800,
-            },
-            value: 80,
+          rotate: {
+            value: 0,
+            random: true,
+            direction: "random",
+            animation: { enable: true, speed: 5 },
           },
-          opacity: {
-            value: 0.5,
+          tilt: {
+            enable: true,
+            direction: "random",
+            random: true,
+            value: { min: 0, max: 360 },
+            animation: { enable: true, speed: 2 },
           },
           shape: {
-            type: "circle",
+            type: "char",
+            character: [
+              { value: "🌿", font: "Verdana", style: "", weight: "400" },
+              { value: "❀", font: "Verdana", style: "", weight: "400" },
+              { value: "✦", font: "Verdana", style: "", weight: "400" },
+              { value: "🌸", font: "Verdana", style: "", weight: "400" },
+            ],
           },
           size: {
-            value: {
-              min: 1,
-              max: 5,
-            },
+            value: { min: 18, max: 35 }, // thoda bada
+          },
+          opacity: {
+            value: { min: 0.2, max: 0.4 }, // depth feel
           },
         },
         detectRetina: true,
