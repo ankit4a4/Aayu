@@ -7,7 +7,7 @@ const ParticlesContainer = () => {
     await loadFull(engine);
   }, []);
 
-  const particlesLoaded = useCallback(async () => {}, []);
+  const particlesLoaded = useCallback(async () => { }, []);
 
   return (
     <Particles
@@ -24,13 +24,13 @@ const ParticlesContainer = () => {
         },
         particles: {
           number: {
-            value: 30, // thoda zyada petals
+            value: 30,
             density: { enable: true, area: 800 },
           },
           move: {
             direction: "bottom",
             enable: true,
-            speed: { min: 0.3, max: 1.2 }, // random speed
+            speed: { min: 0.3, max: 1.2 },
             outModes: { default: "out" },
             straight: false,
           },
@@ -57,10 +57,10 @@ const ParticlesContainer = () => {
             ],
           },
           size: {
-            value: { min: 18, max: 35 }, // thoda bada
+            value: { min: 18, max: 35 },
           },
           opacity: {
-            value: { min: 0.2, max: 0.4 }, // depth feel
+            value: { min: 0.2, max: 0.4 },
           },
         },
         detectRetina: true,

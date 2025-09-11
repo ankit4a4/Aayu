@@ -16,19 +16,6 @@ const sora = Sora({
 const Layout = ({ children }) => {
   return (
     <main className={`text-black bg-white font-sora relative  min-h-screen`}>
-      {/* Background Image */}
-      <div
-        className="absolute inset-0"
-        style={{
-          backgroundImage: "url(bg.jpg)",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          opacity: 0.5,
-          zIndex: 1,
-        }}
-      ></div>
-
-      {/* metadata */}
       <Head>
         <title>Aayu Yog Amrit</title>
         <meta name="description" content="" />
@@ -36,7 +23,6 @@ const Layout = ({ children }) => {
         <meta name="author" content="" />
         <meta name="theme-color" content="#f13024" />
       </Head>
-
       <Nav />
       <Header />
 
