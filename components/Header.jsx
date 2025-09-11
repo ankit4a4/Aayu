@@ -15,7 +15,7 @@ const Header = () => {
           onClick={() => router.push("/")}
         >
           {/* Glass Circle */}
-          <div className="w-[20vw] h-[20vw] md:w-[5vw] md:h-[5vw] rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center shadow-lg">
+          <div className="w-[20vw] h-[20vw] md:w-[5vw] md:h-[5vw] rounded-full bg-white backdrop-blur-md flex items-center justify-center shadow-lg">
             <Image
               src="/photos/black.png"
               alt="Logo"
@@ -28,11 +28,11 @@ const Header = () => {
 
         {/* Center: Contact Info (Gmail + Phone) */}
         <div className="flex flex-col items-center justify-center flex-1 gap-[48vh] md:gap-[12vw]">
-          <p className="text-[2vh] md:text-[1vw] text-gray-700 -rotate-90 whitespace-nowrap font-semibold tracking-widest">
+          <p className="text-[2vh] md:text-[1vw] text-white -rotate-90 whitespace-nowrap font-semibold tracking-widest">
             info@aayu.com
           </p>
 
-          <p className="text-[2vh] md:text-[1vw] text-gray-700 -rotate-90 whitespace-nowrap font-semibold tracking-widest">
+          <p className="text-[2vh] md:text-[1vw] text-white -rotate-90 whitespace-nowrap font-semibold tracking-widest">
             +91 98765 43210
           </p>
         </div>

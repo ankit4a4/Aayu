@@ -38,7 +38,7 @@ const Nav = () => {
         {/* Top Section */}
         <div className="flex flex-col items-center">
           <motion.div
-            className="mt-[2vh] mb-[1.5vh] text-gray-800"
+            className="mt-[2vh] mb-[1.5vh] text-white"
             animate={{ y: [0, -1.5, 0] }}
             transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
           >
@@ -47,14 +47,14 @@ const Nav = () => {
 
           <button
             onClick={() => setOpen(true)}
-            className="mt-[1.5vw] font-bold text-gray-800 tracking-widest rotate-90 hover:text-accent transition-colors text-[1vw]"
+            className="mt-[1.5vw] font-bold text-white tracking-widest rotate-90 hover:text-accent transition-colors text-[1vw]"
           >
             MENUS
           </button>
         </div>
 
         <div className="flex flex-col items-center justify-center flex-1">
-          <p className="text-[0.8vw] text-gray-600 rotate-90 whitespace-nowrap font-medium tracking-widest">
+          <p className="text-[0.8vw] text-white rotate-90 whitespace-nowrap font-medium tracking-widest">
             Empowering Security
           </p>
         </div>
@@ -63,28 +63,28 @@ const Nav = () => {
           <a
             href="https://linkedin.com"
             target="_blank"
-            className="hover:text-accent transition-colors text-gray-700 text-[1.5vw]"
+            className="hover:text-accent transition-colors text-white text-[1.5vw]"
           >
             <FaLinkedin />
           </a>
           <a
             href="https://instagram.com"
             target="_blank"
-            className="hover:text-accent transition-colors text-gray-700 text-[1.5vw]"
+            className="hover:text-accent transition-colors text-white text-[1.5vw]"
           >
             <FaInstagram />
           </a>
           <a
             href="https://twitter.com"
             target="_blank"
-            className="hover:text-accent transition-colors text-gray-700 text-[1.5vw]"
+            className="hover:text-accent transition-colors text-white text-[1.5vw]"
           >
             <FaTwitter />
           </a>
           <a
             href="https://facebook.com"
             target="_blank"
-            className="hover:text-accent transition-colors text-gray-700 text-[1.5vw]"
+            className="hover:text-accent transition-colors text-white text-[1.5vw]"
           >
             <FaFacebook />
           </a>
@@ -103,7 +103,7 @@ const Nav = () => {
         />
 
         {/* Hamburger */}
-        <button onClick={() => setOpen(true)} className="text-[4vh] text-gray-800">
+        <button onClick={() => setOpen(true)} className="text-[4vh] text-white">
           <HiBars3 />
         </button>
       </header>
