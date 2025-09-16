@@ -103,7 +103,7 @@ const Home = () => {
             <h1 className="text-3xl md:text-[5vw] font-[400] tracking-wide mb-12 drop-shadow-lg">
               Our <span className="text-[#5b7d44]">Products</span>
             </h1>
-            <div className="grid grid-cols-2 md:grid-cols-2 gap-6 md:pr-[8vw]">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:pr-[8vw]">
               {/* Product 1 */}
               <div className="relative group rounded-2xl h-[50vh] md:h-[30vw] overflow-hidden shadow-2xl transform transition duration-500 hover:scale-105">
                 <Image
@@ -123,7 +123,7 @@ const Home = () => {
                 </div>
               </div>
               {/* Product 2 */}
-              <div className="relative group h-[50vh] md:h-[30vw] rounded-2xl overflow-hidden shadow-2xl transform transition duration-500 hover:scale-105">
+              <div className="relative hidden md:block group h-[50vh] md:h-[30vw] rounded-2xl overflow-hidden shadow-2xl transform transition duration-500 hover:scale-105">
                 <Image
                   src="https://wallpaperaccess.com/full/2680927.jpg"
                   alt="Product 2"
