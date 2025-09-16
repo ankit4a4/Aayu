@@ -30,7 +30,7 @@ const AboutSlider = () => {
     speed: 1000,
     slidesToShow: 1,
     slidesToScroll: 1,
-    autoplay: true,
+    autoplay: false,
     autoplaySpeed: 5000,
     arrows: false,
     pauseOnHover: false,
@@ -65,12 +65,12 @@ const AboutSlider = () => {
 
           {/* Content */}
           <div className="absolute inset-0 flex flex-col justify-center items-start text-left px-[4vh] md:px-[8vw] lg:pl-[43%] text-white">
-            <div className="inline-flex items-center justify-center w-[6vh] h-[6vh] md:w-[6vw] md:h-[6vw] rounded-full bg-white text-[3vh] md:text-[3vw] mb-[2vh] md:mb-[1vw] shadow-md">
+            <div className="inline-flex items-center justify-center w-[6vh] h-[6vh] md:w-[6vw] md:h-[6vw] rounded-full bg-white text-[3vh] md:text-[3vw] mb-[0vh] md:mb-[1vw] shadow-md">
               <FaLeaf className="text-green-700" />
             </div>
 
             {/* Heading */}
-            <h2 className="text-[4vh] md:text-[4.2vw] font-[400] mb-[2vh] md:mb-[0vw]">
+            <h2 className="text-[4vh] md:text-[4.2vw] font-[400] mb-[0vh] md:mb-[0vw]">
               About Us
             </h2>
 
@@ -96,7 +96,7 @@ const AboutSlider = () => {
             </p>
 
             {/* Button */}
-            <button className="px-[6vh] py-[2vh] md:px-[3vw] md:py-[1vw] bg-[#598034] rounded-[1vh] md:rounded-lg text-white font-medium shadow-lg hover:shadow-green-500/30 transition-all duration-300">
+            <button className="px-[6vh] py-[1vh] md:px-[3vw] md:py-[1vw] bg-[#598034] rounded-[1vh] md:rounded-lg text-white text-[1.7vh] md:text-[1.1vw] font-medium shadow-lg hover:shadow-green-500/30 transition-all duration-300">
               Know More
             </button>
           </div>
