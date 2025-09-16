@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { BsArrowRight } from "react-icons/bs";
 import { useState } from "react";
+import banner from "../../public/contactPageImage/banner.webp"
 
 const Contact = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -23,16 +24,25 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen relative z-[51] w-full  flex items-center justify-center px-[3vh] md:px-[3vw]">
-      <div className="w-full max-w-[90vw] md:max-w-[50vw] py-[8vh] md:py-[5vw] flex flex-col items-center">
+    <div className="relative min-h-screen z-[51] w-full flex items-center justify-start md:pl-[6vw] px-[3vh] md:px-[3vw]">
+
+      {/* Background Image */}
+      <img
+        src={banner.src}
+        alt="Contact Background"
+        className="absolute inset-0 w-full h-full object-cover -z-10"
+      />
+
+      <div className="w-full max-w-[90vw] bg-white/30 backdrop-blur-lg p-[1vw] rounded-[1.2vw] md:max-w-[35vw] py-[4vh] md:py-[2vw] flex flex-col items-center">
+
         {/* heading */}
         <motion.h2
           initial="hidden"
           animate="show"
           exit="hidden"
-          className="text-black text-[3vh] md:text-[2vw] font-bold mb-[4vh] md:mb-[2vw] text-center"
+          className="text-[#2f6b35] text-[3vh] md:text-[2vw] font-bold mb-[4vh] md:mb-[2vw] text-center"
         >
-          Let&apos;s <span className="text-accent">connect.</span>
+          Let&apos;s connect.
         </motion.h2>
 
         {/* form */}
@@ -52,7 +62,7 @@ const Contact = () => {
               type="text"
               name="name"
               placeholder="Name"
-              className="w-full md:w-1/2 border border-black/40 rounded-[1vh] md:rounded-[0.5vw] px-[2vh] md:px-[1vw] py-[1.5vh] md:py-[0.8vw] text-black text-[2vh] md:text-[1vw] placeholder-black"
+              className="w-full bg-white/30 md:w-1/2 border border-black/40 rounded-[1vh] md:rounded-[0.5vw] px-[2vh] md:px-[1vw] py-[1.5vh] md:py-[0.8vw] text-black text-[2vh] md:text-[1vw] placeholder-black"
               disabled={isLoading}
               required
             />
@@ -60,7 +70,7 @@ const Contact = () => {
               type="email"
               name="email"
               placeholder="E-mail"
-              className="w-full md:w-1/2 border border-black/40 rounded-[1vh] md:rounded-[0.5vw] px-[2vh] md:px-[1vw] py-[1.5vh] md:py-[0.8vw] text-black text-[2vh] md:text-[1vw] placeholder-black"
+              className="w-full bg-white/30 md:w-1/2 border border-black/40 rounded-[1vh] md:rounded-[0.5vw] px-[2vh] md:px-[1vw] py-[1.5vh] md:py-[0.8vw] text-black text-[2vh] md:text-[1vw] placeholder-black"
               disabled={isLoading}
               required
             />
@@ -71,7 +81,7 @@ const Contact = () => {
             type="text"
             name="subject"
             placeholder="Subject"
-            className="w-full border border-black/40 rounded-[1vh] md:rounded-[0.5vw] px-[2vh] md:px-[1vw] py-[1.5vh] md:py-[0.8vw] text-black text-[2vh] md:text-[1vw] placeholder-black"
+            className="w-full border bg-white/30 border-black/40 rounded-[1vh] md:rounded-[0.5vw] px-[2vh] md:px-[1vw] py-[1.5vh] md:py-[0.8vw] text-black text-[2vh] md:text-[1vw] placeholder-black"
             disabled={isLoading}
             required
           />
@@ -80,7 +90,7 @@ const Contact = () => {
           <textarea
             name="message"
             placeholder="Message..."
-            className="w-full border border-black/40 rounded-[1vh] md:rounded-[0.5vw] px-[2vh] md:px-[1vw] py-[1.5vh] md:py-[0.8vw] h-[20vh] md:h-[10vw] resize-none text-black text-[2vh] md:text-[1vw] placeholder-black"
+            className="w-full border bg-white/30 border-black/40 rounded-[1vh] md:rounded-[0.5vw] px-[2vh] md:px-[1vw] py-[1.5vh] md:py-[0.8vw] h-[20vh] md:h-[10vw] resize-none text-black text-[2vh] md:text-[1vw] placeholder-black"
             disabled={isLoading}
             required
           />
@@ -89,7 +99,7 @@ const Contact = () => {
           <button
             type="submit"
             disabled={isLoading}
-            className="relative btn rounded-full border border-black/40 max-w-[40vh] md:max-w-[15vw] px-[3vh] md:px-[2vw] py-[1.5vh] md:py-[0.8vw] text-[2vh] md:text-[1vw] font-semibold text-black transition-all duration-300 flex items-center justify-center overflow-hidden hover:border-accent group"
+            className="relative btn  rounded-full border border-black/40 bg-[#2f6b35] text-white max-w-[40vh] md:max-w-[15vw] px-[3vh] md:px-[2vw] py-[1.5vh] md:py-[2vw] text-[2vh] md:text-[1vw] font-semibold  transition-all duration-300 flex items-center justify-center overflow-hidden hover:border-accent group"
           >
             <span className="group-hover:-translate-y-[120%] group-hover:opacity-0 transition-all duration-500">
               Let&apos;s talk

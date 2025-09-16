@@ -51,15 +51,15 @@ const Product = () => {
       <div className="absolute inset-0 bg-black/60"></div>
 
       {/* Content */}
-      <div className="absolute inset-0 flex flex-col justify-center items-start text-white px-[5vw] md:px-[5vw] lg:pl-[40%]">
+      <div className="absolute inset-0 flex flex-col justify-center items-start text-white px-[5vw] md:px-[5vw] md:pl-[40%]">
         <div className="w-[100%] md:max-w-[60vw]">
           {/* Heading */}
-          <h2 className="text-[4vh] md:text-[4vw] font-[400] mb-[2vh] md:mb-[1.5vw]">
+          <h2 className="text-[4vh] md:text-[4vw] font-[400] mb-[2vh] md:mb-[1vw]">
             Our <span className="text-green-400">Products</span>
           </h2>
 
           {/* Intro */}
-          <p className="text-[2vh] md:text-[1.2vw] mb-[3vh] md:mb-[1.5vw] leading-[3vh] md:leading-[1.6vw] text-gray-200">
+          <p className="text-[2vh] md:text-[1.2vw] mb-[3vh] md:mb-[1vw] leading-[3vh] md:leading-[1.6vw] text-gray-200">
             Discover our range of <span className="text-white font-semibold">100% Ayurvedic products</span>,
             crafted to bring balance, health, and vitality into your daily life.
             Each formula is inspired by ancient wisdom and backed by modern standards.
@@ -74,25 +74,25 @@ const Product = () => {
                   initial={{ opacity: 0, y: 40 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.2 }}
-                  className="bg-white/10 backdrop-blur-md p-[2vh] rounded-xl shadow-md border border-white/20 
-                             hover:scale-105 transition-all duration-300 mx-[2vh]"
+                  className="bg-white/10 backdrop-blur-md  rounded-xl shadow-md border border-white/20 
+                             hover:scale-105 transition-all duration-300 "
                 >
                   <img
                     src={item.img}
                     alt={item.name}
                     className="w-full h-[25vh] object-cover rounded-lg mb-[1.5vh]"
                   />
-                  <h3 className="text-[2.5vh] font-semibold text-white mb-[1vh]">
+                  <h3 className="text-[2.5vh] font-semibold text-white mb-[1vh] px-3">
                     {item.name}
                   </h3>
-                  <p className="text-[1.8vh] text-gray-200">{item.desc}</p>
+                  <p className="text-[1.8vh] text-gray-200 px-3">{item.desc}</p>
                 </motion.div>
               ))}
             </Slider>
           </div>
 
           {/* Desktop Grid */}
-          <div className="hidden md:grid grid-cols-3 gap-[2vw] max-w-[100%]">
+          <div className="hidden md:grid grid-cols-3 gap-[1vw] max-w-[100%]">
             {products.map((item, i) => (
               <motion.div
                 key={i}
