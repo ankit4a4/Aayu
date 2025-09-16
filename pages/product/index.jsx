@@ -19,84 +19,107 @@ const products = [
     name: "Tulsi Drops",
     desc: "Pure Tulsi extract for respiratory & overall wellness.",
     img: "https://tiimg.tistatic.com/fp/1/008/627/tulsi-drops-905.jpg",
-  }
+  },
 ];
 
 const Product = () => {
-  const settings = {
+  const sliderSettings = {
     dots: true,
+    arrows: false,
     infinite: true,
     speed: 800,
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 4000,
-    arrows: false,
+    pauseOnHover: true,
+    swipe: true,      // ✅ swipe allow
+    draggable: true,  // ✅ draggable allow
+    adaptiveHeight: true, // optional: slide height adjusts automatically
   };
 
-  const Card = ({ item }) => (
-    <motion.div
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: false }}
-      transition={{ delay: 0.2 }}
-      className="group relative bg-white/10 backdrop-blur-xl rounded-[2vh] pb-[2vh] md:rounded-[2vw] shadow-lg 
-                 border border-white/20 flex flex-col items-center text-center
-                 hover:scale-105 hover:shadow-2xl transition-all duration-300
-                 max-w-[80vw] md:max-w-[20vw] overflow-hidden"
-    >
-      {/* Glow on Hover */}
-      <div className="absolute inset-0 rounded-[2vh] md:rounded-[2vw] bg-gradient-to-tr from-green-400/40 to-yellow-300/40 opacity-0 group-hover:opacity-100 blur-lg transition duration-500"></div>
+  return (
+    <div className="w-screen h-screen relative">
+      {/* Background Image */}
+      <img
+        src="/productPageImage/banner.webp"
+        alt="Product Background"
+        className="w-full h-full object-cover"
+      />
 
-      {/* Image */}
-      <div className="relative w-full h-[30vh] md:h-[15vw]">
-        <img
-          src={item.img}
-          alt={item.name}
-          className="w-full h-full object-cover rounded-t-[2vh] md:rounded-t-[2vw] transition-all duration-300"
-        />
-      </div>
+      {/* Black overlay */}
+      <div className="absolute inset-0 bg-black/60"></div>
 
       {/* Content */}
-      <div className="relative z-10 p-[2vh] md:p-[1vw] h-[20vh] md:h-[10vw] flex flex-col justify-center">
-        <h2 className="text-[2vh] md:text-[1.9vw] font-semibold text-gray-900 group-hover:text-green-600 transition-colors duration-300">
-          {item.name}
-        </h2>
-        <p className="text-gray-700 mt-[1vh] md:mt-[0.5vw] text-[1.5vh] md:text-[1.3vw] leading-relaxed">
-          {item.desc}
-        </p>
-      </div>
-    </motion.div>
-  );
+      <div className="absolute inset-0 flex flex-col justify-center items-start text-white px-[5vw] md:px-[5vw] lg:pl-[40%]">
+        <div className="w-[100%] md:max-w-[60vw]">
+          {/* Heading */}
+          <h2 className="text-[4vh] md:text-[4vw] font-[400] mb-[2vh] md:mb-[1.5vw]">
+            Our <span className="text-green-400">Products</span>
+          </h2>
 
-  return (
-    <div className="min-h-screen md:w-[80vw] mx-auto relative z-[51] flex flex-col items-center justify-center px-[2vh] md:px-[2vw] py-[5vh] md:py-[3vw]">
-      {/* Heading */}
-      <motion.h1
-        initial={{ y: -40, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6 }}
-        className="text-[3vh] md:text-[2vw] font-bold text-black mb-[4vh] md:mb-[2vw] text-center"
-      >
-        Ayurvedic <span className="text-green-500">Products</span>
-      </motion.h1>
+          {/* Intro */}
+          <p className="text-[2vh] md:text-[1.2vw] mb-[3vh] md:mb-[1.5vw] leading-[3vh] md:leading-[1.6vw] text-gray-200">
+            Discover our range of <span className="text-white font-semibold">100% Ayurvedic products</span>,
+            crafted to bring balance, health, and vitality into your daily life.
+            Each formula is inspired by ancient wisdom and backed by modern standards.
+          </p>
 
-      {/* Mobile Slider */}
-      <div className="block md:hidden w-full">
-        <Slider {...settings}>
-          {products.map((item, i) => (
-            <div key={i} className="px-[1vh]">
-              <Card item={item} />
-            </div>
-          ))}
-        </Slider>
-      </div>
+          {/* Mobile Slider */}
+          <div className="block md:hidden w-full">
+            <Slider {...sliderSettings}>
+              {products.map((item, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.2 }}
+                  className="bg-white/10 backdrop-blur-md p-[2vh] rounded-xl shadow-md border border-white/20 
+                             hover:scale-105 transition-all duration-300 mx-[2vh]"
+                >
+                  <img
+                    src={item.img}
+                    alt={item.name}
+                    className="w-full h-[25vh] object-cover rounded-lg mb-[1.5vh]"
+                  />
+                  <h3 className="text-[2.5vh] font-semibold text-white mb-[1vh]">
+                    {item.name}
+                  </h3>
+                  <p className="text-[1.8vh] text-gray-200">{item.desc}</p>
+                </motion.div>
+              ))}
+            </Slider>
+          </div>
 
-      {/* Desktop Grid */}
-      <div className="hidden md:grid grid-cols-1 md:grid-cols-3 gap-[2vw]">
-        {products.map((item, i) => (
-          <Card key={i} item={item} />
-        ))}
+          {/* Desktop Grid */}
+          <div className="hidden md:grid grid-cols-3 gap-[2vw] max-w-[100%]">
+            {products.map((item, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.2 }}
+                className="bg-white/10 backdrop-blur-md p-[1vw] rounded-xl shadow-md border border-white/20 
+                           hover:scale-105 transition-all duration-300"
+              >
+                <img
+                  src={item.img}
+                  alt={item.name}
+                  className="w-full h-[15vw] object-cover rounded-lg mb-[1vw]"
+                />
+                <h3 className="text-[1.8vw] font-semibold text-white mb-[0.5vw]">
+                  {item.name}
+                </h3>
+                <p className="text-[1.3vw] text-gray-200">{item.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Tagline */}
+          <p className="italic mt-[2vh] md:mt-[1vw] text-[1.8vh] md:text-[1vw] text-gray-300">
+            “Ayurveda for everyday wellness – naturally.”
+          </p>
+        </div>
       </div>
     </div>
   );

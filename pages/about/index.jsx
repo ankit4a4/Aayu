@@ -1,191 +1,193 @@
-"use client"
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+'use client'
+
+import React from "react";
+import Slider from "react-slick";
 import CountUp from "react-countup";
+import Image from "next/image";
 
-// ✅ Correct react-icons import
-import { 
-  FaLeaf, 
-  FaStar, 
-  FaBookOpen, 
-  FaSmile, 
-  FaCalendarAlt, 
-  FaUsers, 
-  FaBox, 
-  FaUserMd 
+import banner1 from "../../public/aboutPageImages/banner1.webp";
+import banner2 from "../../public/aboutPageImages/banner2.webp";
+import banner4 from "../../public/aboutPageImages/banner3.webp";
+
+import {
+  FaLeaf,
+  FaStar,
+  FaBookOpen,
+  FaSmile,
+  FaCalendarAlt,
+  FaUsers,
+  FaBox,
+  FaUserMd
 } from "react-icons/fa";
-import ParticlesContainer from "../../components/ParticlesContainer";
 
-const About = () => {
-  const [index, setIndex] = useState(0);
-  const sections = ["about", "why", "experience"];
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % sections.length);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, []);
-
-  const current = sections[index];
-
-  const handleDotClick = (i) => {
-    setIndex(i);
+const AboutSlider = () => {
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 1000,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 5000,
+    arrows: false,
+    pauseOnHover: false,
+    appendDots: dots => (
+      <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-[100]">
+        <ul className="flex gap-3"> {dots} </ul>
+      </div>
+    ),
+    customPaging: i => (
+      <button className="w-3 h-3 md:w-4 md:h-4 rounded-full bg-white border border-gray-300 hover:bg-green-500 transition-colors"></button>
+    )
   };
 
   return (
-    <div className="h-screen w-screen overflow-hidden relative  z-[51]">
-      <ParticlesContainer />
-      <AnimatePresence mode="wait">
-        {/* About Section */}
-        {current === "about" && (
-          <motion.div
-            key="about"
-            className="h-screen w-screen flex items-center justify-center p-[3vw] max-md:p-[3vh] relative"
-            initial={{ opacity: 0, x: 100 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -100 }}
-            transition={{ duration: 0.8, ease: "easeInOut" }}
-          >
-            <div className="max-w-[70vw] text-center  rounded-[2vw] max-md:rounded-[2vh] p-[3vw] max-md:p-[3vh] shadow-2xl border">
-              <motion.div
-                initial={{ scale: 0, rotate: -180 }}
-                animate={{ scale: 1, rotate: 0 }}
-                transition={{ delay: 0.2, type: "spring", stiffness: 100 }}
-                className="inline-flex items-center justify-center w-[6vw] h-[6vw] max-md:w-[6vh] max-md:h-[6vh] rounded-full bg-gray-100 text-[3vw] max-md:text-[3vh] mb-[2vw] max-md:mb-[2vh] shadow-md"
-              >
-                <FaLeaf />
-              </motion.div>
-              <h2 className="text-[3vw] max-md:text-[3vh] font-bold mb-[2vw] max-md:mb-[2vh] font-serif text-black">
-                About Us
-              </h2>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4 }}
-              >
-                <p className="text-[1.5vw] max-md:text-[1.5vh] leading-relaxed mb-[1.5vw] max-md:mb-[1.5vh] max-w-[60vw] mx-auto text-black">
-                  Aayu Yog Amrit is a trusted name in the world of Ayurveda. From
-                  immunity boosters to skincare solutions, herbal supplements to
-                  natural oils, we create products inspired by ancient Ayurvedic
-                  wisdom and backed by modern quality standards.
-                </p>
-                <p className="text-[1.2vw] max-md:text-[1.2vh] italic text-black">
-                  "Bringing ancient wisdom to modern wellness"
-                </p>
-              </motion.div>
-            </div>
-          </motion.div>
-        )}
+    <div className="w-screen h-screen overflow-hidden relative">
+      <Slider {...settings}>
 
-        {/* Why Choose Us Section */}
-        {current === "why" && (
-          <motion.div
-            key="why"
-            className="h-screen w-screen flex flex-col items-center justify-center p-[3vw] max-md:p-[3vh] relative"
-            initial={{ opacity: 0, y: 100 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -100 }}
-            transition={{ duration: 0.8, ease: "easeInOut" }}
-          >
-            <div className="max-w-[80vw] w-full  rounded-[2vw] max-md:rounded-[2vh] p-[3vw] max-md:p-[3vh] shadow-2xl border">
-              <h2 className="text-[3vw] max-md:text-[3vh] font-bold mb-[3vw] max-md:mb-[3vh] text-center font-serif text-black">
+        {/* /////////////////// slider 1 ///////////////////////////////////// */}
+        <div className="w-screen h-screen relative">
+          <Image
+            src={banner1}
+            alt="About Background"
+            fill
+            priority // first image fast load
+            quality={80}
+            className="object-cover"
+          />
+          <div className="absolute inset-0 flex flex-col justify-center items-start text-left px-6 md:px-[8vw] lg:pl-[43%] text-white">
+            <div className="inline-flex items-center justify-center w-[6vw] h-[6vw] max-md:w-[6vh] max-md:h-[6vh] rounded-full bg-white text-[3vw] max-md:text-[3vh] mb-[2vw] max-md:mb-[2vh] shadow-md">
+              <FaLeaf className="text-green-700" />
+            </div>
+            <h2 className="text-5xl md:text-[4.2vw] font-[400] mb-4 md:mb-[1.5vw]">About Us</h2>
+            <p className="text-lg md:text-[1.4vw] md:leading-[1.8vw] mb-4 md:mb-[1.2vw]">
+              Aayu Yog Amrit is a trusted name in the world of Ayurveda. From immunity boosters to skincare solutions, herbal supplements to natural oils,
+              we create products inspired by ancient Ayurvedic wisdom and backed by modern quality standards.
+            </p>
+            <p className="text-lg md:text-[1.2vw] italic mb-6 md:mb-[1.8vw]">
+              "Bringing ancient wisdom to modern wellness"
+            </p>
+            <p className="text-base md:text-[1.1vw] leading-relaxed mb-4">
+              Our mission is to make Ayurveda accessible and relevant for everyone in today’s fast-paced world.
+              With a strong focus on purity, sustainability, and innovation, we aim to provide holistic health solutions
+              that nurture both body and mind.
+            </p>
+            <p className="text-base md:text-[1.1vw] leading-relaxed mb-4">
+              We believe true wellness comes from balance — balancing nature with science, tradition with innovation, and mind with body.
+              That’s why every product is crafted with care, ensuring it not only heals but also enhances everyday living.
+            </p>
+            <button className="px-8 py-3 md:py-[1vw] md:px-[3vw] bg-[#598034] rounded-lg text-white font-medium shadow-lg hover:shadow-green-500/30 transition-all duration-300">
+              Know More
+            </button>
+          </div>
+        </div>
+
+        {/* /////////////////// slider 2 ///////////////////////////////////// */}
+        <div className="w-screen h-screen relative">
+          <Image
+            src={banner2}
+            alt="Why Choose Us Background"
+            fill
+            quality={75}
+            loading="lazy"
+            className="object-cover"
+          />
+          <div className="absolute inset-0 flex flex-col justify-center items-start text-start px-6 md:px-[5vw] lg:pr-[45%] text-white">
+            <div className="relative z-10 w-full md:pl-[2vw]">
+              <h2 className="text-5xl md:text-[4vw] font-[400] mb-4 md:mb-[1.5vw]">
                 Why Choose Us
               </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-[2vw] max-md:gap-[2vh] max-w-[70vw] mx-auto">
+              <p className="text-lg md:text-[1.3vw] leading-relaxed mb-6 md:mb-[2vw] max-w-[55vw] text-gray-200">
+                At <span className="font-semibold text-white">Aayu Yog Amrit</span>, we
+                are committed to creating herbal and Ayurvedic products that promote
+                holistic wellness. Every product is crafted with care, using ancient
+                Ayurvedic wisdom combined with modern quality standards to ensure purity
+                and effectiveness.
+              </p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-[2vw] max-w-[55vw] mb-6">
                 {[
                   { icon: <FaLeaf />, text: "100% Natural & Herbal Products" },
                   { icon: <FaStar />, text: "Premium Quality Ingredients" },
                   { icon: <FaBookOpen />, text: "Backed by Ayurvedic Science" },
                   { icon: <FaSmile />, text: "Thousands of Happy Customers" },
                 ].map((item, i) => (
-                  <motion.div
+                  <div
                     key={i}
-                    className="p-[2vw] max-md:p-[2vh]  rounded-[1.5vw] max-md:rounded-[1.5vh] shadow-lg border flex items-center space-x-[1vw] max-md:space-x-[1vh]"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.2 + i * 0.1 }}
-                    whileHover={{ y: -5, transition: { duration: 0.2 } }}
+                    className="p-5 md:p-[2vw] rounded-xl shadow-lg border border-white/30 bg-white/10 backdrop-blur-sm flex items-center space-x-4 md:space-x-[1vw] hover:-translate-y-1 hover:bg-white/20 transition-all duration-300"
                   >
-                    <span className="text-[2.5vw] max-md:text-[2.5vh] text-black">{item.icon}</span>
-                    <span className="text-[1.3vw] max-md:text-[1.3vh] font-medium text-black">{item.text}</span>
-                  </motion.div>
+                    <span className="text-3xl md:text-[2vw] text-white">
+                      {item.icon}
+                    </span>
+                    <span className="text-lg md:text-[1.2vw] font-medium text-white">
+                      {item.text}
+                    </span>
+                  </div>
                 ))}
               </div>
+              <p className="italic text-base md:text-[1.1vw] text-gray-200">
+                “Your health is our mission — experience the purity of Ayurveda with us.”
+              </p>
             </div>
-          </motion.div>
-        )}
+          </div>
+        </div>
 
-        {/* Experience Section */}
-        {current === "experience" && (
-          <motion.div
-            key="experience"
-            className="h-screen w-screen flex flex-col items-center justify-center p-[3vw] max-md:p-[3vh] relative"
-            initial={{ scale: 0.9, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0.9, opacity: 0 }}
-            transition={{ duration: 0.8, ease: "easeInOut" }}
-          >
-            <div className="max-w-[85vw] w-full  rounded-[2vw] max-md:rounded-[2vh] p-[3vw] max-md:p-[3vh] shadow-2xl border">
-              <h2 className="text-[3vw] max-md:text-[3vh] font-bold mb-[3vw] max-md:mb-[3vh] text-center font-serif text-black">
+        {/* /////////////////// slider 3 ///////////////////////////////////// */}
+        <div className="w-screen h-screen relative">
+          <Image
+            src={banner4}
+            alt="Experience Background"
+            fill
+            quality={75}
+            loading="lazy"
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-black/30"></div>
+          <div className="absolute inset-0 flex flex-col justify-center items-start text-white px-6 md:px-[5vw] lg:pl-[40%]">
+            <div className="max-w-[55vw]">
+              <h2 className="text-3xl md:text-[4vw] font-[400] tracking-wide mb-6 drop-shadow-lg">
                 Our Experience
               </h2>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-[2vw] max-md:gap-[2vh] max-w-[75vw] mx-auto">
+              <p className="text-base md:text-[1.3vw] leading-relaxed mb-8 text-gray-200">
+                With over a decade of dedication in the Ayurvedic wellness industry,
+                <span className="font-semibold text-white"> Aayu Yog Amrit </span> has
+                been committed to crafting natural products that touch lives. From
+                wellness solutions to skincare, our journey reflects quality, trust, and
+                care.
+              </p>
+              <div className="grid grid-cols-2 md:grid-cols-2 gap-4 md:gap-6 max-w-[500px]">
                 {[
                   { number: 10, label: "Years of Excellence", icon: <FaCalendarAlt /> },
                   { number: 5000, label: "Happy Customers", icon: <FaUsers /> },
                   { number: 200, label: "Natural Products", icon: <FaBox /> },
                   { number: 50, label: "Wellness Experts", icon: <FaUserMd /> },
                 ].map((stat, i) => (
-                  <motion.div
+                  <div
                     key={i}
-                    className="p-[2vw] max-md:p-[2vh]  rounded-[2vw] max-md:rounded-[2vh] shadow-lg text-center border"
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.3 + i * 0.1 }}
-                    whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
+                    className="p-3 md:p-4 rounded-xl shadow-lg text-center border bg-white/10 backdrop-blur-sm hover:scale-105 transition-all duration-300"
                   >
-                    <div className="text-[2.5vw] max-md:text-[2.5vh] mb-[1vw] max-md:mb-[1vh] text-black">
-                      {stat.icon}
-                    </div>
-                    <h3 className="text-[2.5vw] max-md:text-[2.5vh] font-extrabold mb-[1vw] max-md:mb-[1vh] text-black">
+                    <div className="text-xl md:text-2xl mb-1 text-white">{stat.icon}</div>
+                    <h3 className="text-lg md:text-xl font-extrabold text-white">
                       <CountUp start={0} end={stat.number} duration={2.5} />+
                     </h3>
-                    <p className="text-[1.2vw] max-md:text-[1.2vh] font-medium text-black">
+                    <p className="text-sm md:text-base font-medium text-gray-200">
                       {stat.label}
                     </p>
-                  </motion.div>
+                  </div>
                 ))}
               </div>
+              <p className="italic mt-6 text-sm md:text-base text-gray-300">
+                “Decades of excellence, thousands of smiles — our journey is your trust.”
+              </p>
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          </div>
+        </div>
 
-      {/* Navigation Dots */}
-      <div className="absolute bottom-[2vw] max-md:bottom-[2vh] left-1/2 transform -translate-x-1/2 flex space-x-[1vw] max-md:space-x-[1vh] z-10">
-        {sections.map((_, i) => (
-          <button
-            key={i}
-            onClick={() => handleDotClick(i)}
-            className={`w-[1vw] h-[1vw] max-md:w-[1vh] max-md:h-[1vh] rounded-full transition-all duration-300 ${
-              i === index ? "bg-black scale-125" : "bg-gray-400 hover:bg-black"
-            }`}
-            aria-label={`Go to section ${i + 1}`}
-          />
-        ))}
-      </div>
-
-      {/* Progress Bar */}
-      <motion.div
-        className="absolute top-0 left-0 h-[0.3vw] max-md:h-[0.3vh] bg-black"
-        initial={{ width: "0%" }}
-        animate={{ width: "100%" }}
-        transition={{ duration: 5, ease: "linear" }}
-        key={index}
-      />
+      </Slider>
     </div>
   );
 };
 
-export default About;
+export default AboutSlider;

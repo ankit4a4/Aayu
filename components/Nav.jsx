@@ -27,15 +27,38 @@ const links = [
   { label: "Contact", href: "/contact", Icon: HiEnvelope },
 ];
 
+// Cinematic slow zoom popup
+const popupVariants = {
+  hidden: { opacity: 0, scale: 0.2 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      type: "spring",
+      stiffness: 100,
+      damping: 12,
+      mass: 0.8,
+      when: "beforeChildren",
+      staggerChildren: 0.2,
+    },
+  },
+  exit: { opacity: 0, scale: 0.2, transition: { duration: 0.4 } },
+};
+
+// Menu items variants with bouncy pop
+const itemVariants = {
+  hidden: { x: -30, opacity: 0, scale: 0.7 },
+  visible: { x: 0, opacity: 1, scale: 1, transition: { type: "spring", stiffness: 120, damping: 14 } },
+};
+
 const Nav = () => {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
   return (
     <>
-      {/* Desktop Sidebar (right side) */}
+      {/* Desktop Sidebar */}
       <aside className="hidden md:flex fixed top-0 right-0 h-[100vh] w-[6vw] bg-transparent flex-col items-center justify-between py-[6vh] z-[61]">
-        {/* Top Section */}
         <div className="flex flex-col items-center">
           <motion.div
             className="mt-[2vh] mb-[1.5vh] text-white"
@@ -60,32 +83,16 @@ const Nav = () => {
         </div>
 
         <div className="flex flex-col items-center gap-[1.5vw] mb-[2vh]">
-          <a
-            href="https://linkedin.com"
-            target="_blank"
-            className="hover:text-accent transition-colors text-white text-[1.5vw]"
-          >
+          <a href="https://linkedin.com" target="_blank" className="hover:text-accent transition-colors text-white text-[1.5vw]">
             <FaLinkedin />
           </a>
-          <a
-            href="https://instagram.com"
-            target="_blank"
-            className="hover:text-accent transition-colors text-white text-[1.5vw]"
-          >
+          <a href="https://instagram.com" target="_blank" className="hover:text-accent transition-colors text-white text-[1.5vw]">
             <FaInstagram />
           </a>
-          <a
-            href="https://twitter.com"
-            target="_blank"
-            className="hover:text-accent transition-colors text-white text-[1.5vw]"
-          >
+          <a href="https://twitter.com" target="_blank" className="hover:text-accent transition-colors text-white text-[1.5vw]">
             <FaTwitter />
           </a>
-          <a
-            href="https://facebook.com"
-            target="_blank"
-            className="hover:text-accent transition-colors text-white text-[1.5vw]"
-          >
+          <a href="https://facebook.com" target="_blank" className="hover:text-accent transition-colors text-white text-[1.5vw]">
             <FaFacebook />
           </a>
         </div>
@@ -93,17 +100,8 @@ const Nav = () => {
 
       {/* Mobile Header */}
       <header className="flex md:hidden fixed top-0 left-0 w-[100vw] h-[8vh] bg-white/90 shadow-md flex items-center justify-between px-[4vw] z-[61]">
-        {/* Logo Image */}
-        <Image
-          src="/photos/black.png"
-          alt="Logo"
-          width={60}
-          height={60}
-          className="h-[6vh] w-auto"
-        />
-
-        {/* Hamburger */}
-        <button onClick={() => setOpen(true)} className="text-[4vh] text-white">
+        <Image src="/photos/black.png" alt="Logo" width={60} height={60} className="h-[6vh] w-auto" />
+        <button onClick={() => setOpen(true)} className="text-[4vh] text-black">
           <HiBars3 />
         </button>
       </header>
@@ -112,13 +110,13 @@ const Nav = () => {
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ opacity: 0, x: "100%" }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: "100%" }}
-            transition={{ duration: 0.5, ease: "easeInOut" }}
+            variants={popupVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
             className="fixed inset-0 bg-black flex flex-col items-center justify-center gap-[8vh] z-[70] px-[6vw]"
           >
-            {/* Cross Button */}
+            {/* Close Button */}
             <button
               onClick={() => setOpen(false)}
               className="absolute top-[6vh] right-[8vw] text-white text-[7vh] md:text-[3vw] hover:text-accent transition-colors"
@@ -130,12 +128,7 @@ const Nav = () => {
             {links.map(({ label, href, Icon }, index) => {
               const isActive = pathname === href;
               return (
-                <motion.div
-                  key={index}
-                  initial={{ x: -8, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  transition={{ delay: index * 0.15 }}
-                >
+                <motion.div key={index} variants={itemVariants}>
                   <Link
                     href={href}
                     onClick={() => setOpen(false)}
@@ -150,36 +143,19 @@ const Nav = () => {
               );
             })}
 
-            {/* Bottom Section in Popup (Mobile only) */}
+            {/* Social Icons (Mobile) */}
             <div className="absolute bottom-[10vh] flex flex-col items-center gap-[6vh] md:hidden">
-              {/* Social Icons */}
               <div className="flex gap-[6vw]">
-                <a
-                  href="https://linkedin.com"
-                  target="_blank"
-                  className="text-white text-[5vh] hover:text-accent transition-transform hover:scale-110"
-                >
+                <a href="https://linkedin.com" target="_blank" className="text-white text-[5vh] hover:text-accent transition-transform hover:scale-110">
                   <FaLinkedin />
                 </a>
-                <a
-                  href="https://instagram.com"
-                  target="_blank"
-                  className="text-white text-[5vh] hover:text-accent transition-transform hover:scale-110"
-                >
+                <a href="https://instagram.com" target="_blank" className="text-white text-[5vh] hover:text-accent transition-transform hover:scale-110">
                   <FaInstagram />
                 </a>
-                <a
-                  href="https://twitter.com"
-                  target="_blank"
-                  className="text-white text-[5vh] hover:text-accent transition-transform hover:scale-110"
-                >
+                <a href="https://twitter.com" target="_blank" className="text-white text-[5vh] hover:text-accent transition-transform hover:scale-110">
                   <FaTwitter />
                 </a>
-                <a
-                  href="https://facebook.com"
-                  target="_blank"
-                  className="text-white text-[5vh] hover:text-accent transition-transform hover:scale-110"
-                >
+                <a href="https://facebook.com" target="_blank" className="text-white text-[5vh] hover:text-accent transition-transform hover:scale-110">
                   <FaFacebook />
                 </a>
               </div>
