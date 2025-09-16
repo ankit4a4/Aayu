@@ -17,7 +17,7 @@ const Header = () => {
           {/* Glass Circle */}
           <div className="w-[20vw] h-[20vw] md:w-[5vw] md:h-[5vw] rounded-full bg-white backdrop-blur-md flex items-center justify-center shadow-lg">
             <Image
-              src="/photos/black.png"
+              src="/photos/AayuLogo.png"
               alt="Logo"
               width={50}
               height={50}

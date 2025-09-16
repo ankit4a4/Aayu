@@ -99,8 +99,8 @@ const Nav = () => {
       </aside>
 
       {/* Mobile Header */}
-      <header className="flex md:hidden fixed top-0 left-0 w-[100vw] h-[8vh] bg-white/90 shadow-md flex items-center justify-between px-[4vw] z-[61]">
-        <Image src="/photos/black.png" alt="Logo" width={60} height={60} className="h-[6vh] w-auto" />
+      <header className=" md:hidden fixed top-0 left-0 w-[100vw] h-[8vh] bg-white/90 shadow-md flex items-center justify-between px-[4vw] z-[61]">
+        <Image src="/photos/AayuLogo.png" alt="Logo" width={60} height={60} className="h-[6vh] w-auto" />
         <button onClick={() => setOpen(true)} className="text-[4vh] text-black">
           <HiBars3 />
         </button>
