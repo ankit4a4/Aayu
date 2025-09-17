@@ -114,12 +114,12 @@ const Nav = () => {
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="fixed inset-0 bg-black flex flex-col items-center justify-center gap-[8vh] z-[70] px-[6vw]"
+            className="fixed inset-0 bg-white/30 backdrop-blur-lg flex flex-col items-center justify-center gap-[8vh] z-[70] px-[6vw]"
           >
             {/* Close Button */}
             <button
               onClick={() => setOpen(false)}
-              className="absolute top-[6vh] right-[8vw] text-white text-[7vh] md:text-[3vw] hover:text-accent transition-colors"
+              className="absolute top-[6vh] right-[8vw] text-black text-[7vh] md:text-[3vw] hover:text-[#b78a1b] transition-colors"
             >
               <IoClose />
             </button>
@@ -132,9 +132,8 @@ const Nav = () => {
                   <Link
                     href={href}
                     onClick={() => setOpen(false)}
-                    className={`flex items-center gap-[6vw] text-[5vh] md:text-[2.5vw] font-bold transition-colors ${
-                      isActive ? "text-accent" : "text-white hover:text-accent"
-                    }`}
+                    className={`flex items-center gap-[6vw] text-[5vh] md:text-[2.5vw] font-bold transition-colors ${isActive ? "text-[#b78a1b]" : "text-black hover:text-[#b78a1b]"
+                      }`}
                   >
                     <Icon className="text-[6vh] md:text-[3vw]" />
                     {label}
