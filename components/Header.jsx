@@ -5,6 +5,12 @@ import Image from "next/image";
 const Header = () => {
   const router = useRouter();
 
+  // Thin outline style for text
+  const thinOutline = {
+    color: "white",
+    WebkitTextStroke: "0.3px black",
+  };
+
   return (
     <section>
       {/* Left Sidebar */}
@@ -28,11 +34,17 @@ const Header = () => {
 
         {/* Center: Contact Info (Gmail + Phone) */}
         <div className="flex flex-col items-center justify-center flex-1 gap-[48vh] md:gap-[12vw]">
-          <p className="text-[2vh] md:text-[1vw] text-white -rotate-90 whitespace-nowrap font-semibold tracking-widest">
+          <p
+            className="text-[2vh] md:text-[1vw] -rotate-90 whitespace-nowrap font-semibold tracking-widest"
+            style={thinOutline}
+          >
             info@aayu.com
           </p>
 
-          <p className="text-[2vh] md:text-[1vw] text-white -rotate-90 whitespace-nowrap font-semibold tracking-widest">
+          <p
+            className="text-[2vh] md:text-[1vw] -rotate-90 whitespace-nowrap font-semibold tracking-widest"
+            style={thinOutline}
+          >
             +91 98765 43210
           </p>
         </div>

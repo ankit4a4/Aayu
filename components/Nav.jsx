@@ -55,45 +55,56 @@ const Nav = () => {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
+  // Thin outline style for text and icons
+  const thinOutline = {
+    color: "white",
+    WebkitTextStroke: "0.4px black", 
+  };
+
   return (
     <>
       {/* Desktop Sidebar */}
       <aside className="hidden md:flex fixed top-0 right-0 h-[100vh] w-[6vw] bg-transparent flex-col items-center justify-between py-[6vh] z-[61]">
         <div className="flex flex-col items-center">
           <motion.div
-            className="mt-[2vh] mb-[1.5vh] text-white"
-            animate={{ y: [0, -1.5, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+            className="mt-[2vh] mb-[1.5vh]"
+            style={thinOutline}
+            animate={{ y: [0, -4, 0] }}
+            transition={{ duration: 1, repeat: Infinity, ease: "easeInOut" }}
           >
-            <FaHandPointDown className="text-[2vw]" />
+            <FaHandPointDown className="text-[2vw]  text-white"  />
           </motion.div>
 
           <button
             onClick={() => setOpen(true)}
-            className="mt-[1.5vw] font-bold text-white tracking-widest rotate-90 hover:text-accent transition-colors text-[1vw]"
+            className="mt-[1.5vw] font-bold tracking-widest rotate-90 hover:text-accent transition-colors text-[1.2vw]"
+            style={thinOutline}
           >
             MENUS
           </button>
         </div>
 
         <div className="flex flex-col items-center justify-center flex-1">
-          <p className="text-[0.8vw] text-white rotate-90 whitespace-nowrap font-medium tracking-widest">
+          <p
+            className="text-[1.1vw] rotate-90 whitespace-nowrap font-medium tracking-widest"
+            style={thinOutline}
+          >
             Empowering Security
           </p>
         </div>
 
-        <div className="flex flex-col items-center gap-[1.5vw] mb-[2vh]">
-          <a href="https://linkedin.com" target="_blank" className="hover:text-accent transition-colors text-white text-[1.5vw]">
-            <FaLinkedin />
+        <div className="flex flex-col items-center gap-[1svw] mb-[2vh]">
+          <a href="https://linkedin.com" target="_blank" className="hover:text-accent transition-colors text-[1.5vw] p-[0.7vw] rounded-full bg-white border border-black" style={thinOutline}>
+            <FaLinkedin className="text-black" />
           </a>
-          <a href="https://instagram.com" target="_blank" className="hover:text-accent transition-colors text-white text-[1.5vw]">
-            <FaInstagram />
+          <a href="https://instagram.com" target="_blank" className="hover:text-accent transition-colors text-[1.5vw] p-[0.7vw] rounded-full bg-white border border-black" style={thinOutline}>
+            <FaInstagram className="text-black" />
           </a>
-          <a href="https://twitter.com" target="_blank" className="hover:text-accent transition-colors text-white text-[1.5vw]">
-            <FaTwitter />
+          <a href="https://twitter.com" target="_blank" className="hover:text-accent transition-colors text-[1.5vw] p-[0.7vw] rounded-full bg-white border border-black" style={thinOutline}>
+            <FaTwitter className="text-black" />
           </a>
-          <a href="https://facebook.com" target="_blank" className="hover:text-accent transition-colors text-white text-[1.5vw]">
-            <FaFacebook />
+          <a href="https://facebook.com" target="_blank" className="hover:text-accent transition-colors text-[1.5vw] p-[0.7vw] rounded-full bg-white border border-black" style={thinOutline}>
+            <FaFacebook className="text-black" />
           </a>
         </div>
       </aside>
@@ -132,10 +143,9 @@ const Nav = () => {
                   <Link
                     href={href}
                     onClick={() => setOpen(false)}
-                    className={`flex items-center gap-[6vw] text-[5vh] md:text-[2.5vw] font-bold transition-colors ${isActive ? "text-[#b78a1b]" : "text-black hover:text-[#b78a1b]"
-                      }`}
+                    className={`flex items-center gap-[6vw] text-[5vh] md:text-[2.5vw] font-bold transition-colors ${isActive ? "text-[#b78a1b]" : "text-black hover:text-[#b78a1b]"}`}
                   >
-                    <Icon className="text-[6vh] md:text-[3vw]" />
+                    <Icon className="text-[6vh] md:text-[3vw]"  />
                     {label}
                   </Link>
                 </motion.div>
@@ -145,17 +155,17 @@ const Nav = () => {
             {/* Social Icons (Mobile) */}
             <div className="absolute bottom-[10vh] flex flex-col items-center gap-[6vh] md:hidden">
               <div className="flex gap-[6vw]">
-                <a href="https://linkedin.com" target="_blank" className="text-white text-[5vh] hover:text-accent transition-transform hover:scale-110">
-                  <FaLinkedin />
+                <a href="https://linkedin.com" target="_blank" className="hover:text-accent transition-transform hover:scale-110 text-[5vh]" style={thinOutline}>
+                  <FaLinkedin style={thinOutline} />
                 </a>
-                <a href="https://instagram.com" target="_blank" className="text-white text-[5vh] hover:text-accent transition-transform hover:scale-110">
-                  <FaInstagram />
+                <a href="https://instagram.com" target="_blank" className="hover:text-accent transition-transform hover:scale-110 text-[5vh]" style={thinOutline}>
+                  <FaInstagram style={thinOutline} />
                 </a>
-                <a href="https://twitter.com" target="_blank" className="text-white text-[5vh] hover:text-accent transition-transform hover:scale-110">
-                  <FaTwitter />
+                <a href="https://twitter.com" target="_blank" className="hover:text-accent transition-transform hover:scale-110 text-[5vh]" style={thinOutline}>
+                  <FaTwitter style={thinOutline} />
                 </a>
-                <a href="https://facebook.com" target="_blank" className="text-white text-[5vh] hover:text-accent transition-transform hover:scale-110">
-                  <FaFacebook />
+                <a href="https://facebook.com" target="_blank" className="hover:text-accent transition-transform hover:scale-110 text-[5vh]" style={thinOutline}>
+                  <FaFacebook style={thinOutline} />
                 </a>
               </div>
             </div>

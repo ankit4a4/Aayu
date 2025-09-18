@@ -112,3 +112,22 @@
 .delay-700 {
   animation-delay: 700ms;
 }
+
+
+::-webkit-scrollbar {
+  width: 1vw;
+}
+
+::-webkit-scrollbar-track {
+  background: #b98820;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #53914c; 
+  border-radius: 50px; 
+  border: 2px solid black;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: darkgreen; 
+}
