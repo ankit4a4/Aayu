@@ -293,8 +293,8 @@ const Product = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
 
             <button
-            onClick={() => router.push("contact")}
-             className="bg-white hover:bg-green-100 text-green-700 border border-green-700 px-8 py-3 rounded-lg font-semibold transition-colors">
+              onClick={() => router.push("contact")}
+              className="bg-white hover:bg-green-100 text-green-700 border border-green-700 px-8 py-3 rounded-lg font-semibold transition-colors">
               Consult Our Experts
             </button>
           </div>
