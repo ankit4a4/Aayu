@@ -5,6 +5,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { FaLeaf, FaStar, FaHeart, FaShoppingCart } from "react-icons/fa";
 import img from "../../public/productPageImage/banner.webp"
+import { useRouter } from "next/navigation";
 
 const products = [
   {
@@ -52,6 +53,7 @@ const products = [
 ];
 
 const Product = () => {
+  const router = useRouter()
   const sliderSettings = {
     dots: true,
     arrows: false,
@@ -290,7 +292,9 @@ const Product = () => {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
 
-            <button className="bg-white hover:bg-green-100 text-green-700 border border-green-700 px-8 py-3 rounded-lg font-semibold transition-colors">
+            <button
+            onClick={() => router.push("contact")}
+             className="bg-white hover:bg-green-100 text-green-700 border border-green-700 px-8 py-3 rounded-lg font-semibold transition-colors">
               Consult Our Experts
             </button>
           </div>

@@ -3,6 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import CountUp from "react-countup";
+import { useRouter } from "next/navigation";
 
 import banner1 from "../../public/aboutPageImages/banner1.webp";
 
@@ -22,6 +23,7 @@ import {
 } from "react-icons/fa";
 
 const AboutUs = () => {
+  const router = useRouter()
   return (
     <div className="w-full overflow-y-auto h-screen overflow-x-hidden">
       <div className="w-screen h-[600px] relative">
@@ -327,16 +329,20 @@ const AboutUs = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="px-8 py-3 bg-white text-green-800 font-semibold rounded-lg hover:bg-green-100 transition-colors duration-300 shadow-md">
+            <button 
+            onClick={() => router.push("/product")}
+            className="px-8 py-3 bg-white text-green-800 font-semibold rounded-lg hover:bg-green-100 transition-colors duration-300 shadow-md">
               Explore Our Products
             </button>
-            <button className="px-8 py-3 bg-transparent border-2 border-white text-white font-semibold rounded-lg hover:bg-white/10 transition-colors duration-300">
+            <button 
+              onClick={() => router.push("/contact")}
+            className="px-8 py-3 bg-transparent border-2 border-white text-white font-semibold rounded-lg hover:bg-white/10 transition-colors duration-300">
               Contact Our Experts
             </button>
           </div>
 
           <p className="mt-10 text-green-200">
-            Have questions? Call us at +91 1234567890 or email info@aayuyogamrit.com
+            Have questions? Call us at   or email info@aayuyogamrit.com
           </p>
         </div>
       </div>

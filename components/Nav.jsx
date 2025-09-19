@@ -58,7 +58,7 @@ const Nav = () => {
   // Thin outline style for text and icons
   const thinOutline = {
     color: "white",
-    WebkitTextStroke: "0.4px black", 
+    WebkitTextStroke: "0.4px black",
   };
 
   return (
@@ -72,7 +72,7 @@ const Nav = () => {
             animate={{ y: [0, -4, 0] }}
             transition={{ duration: 1, repeat: Infinity, ease: "easeInOut" }}
           >
-            <FaHandPointDown className="text-[2vw]  text-white"  />
+            <FaHandPointDown className="text-[2vw]  text-white" />
           </motion.div>
 
           <button
@@ -145,7 +145,7 @@ const Nav = () => {
                     onClick={() => setOpen(false)}
                     className={`flex items-center gap-[6vw] text-[5vh] md:text-[2.5vw] font-bold transition-colors ${isActive ? "text-[#b78a1b]" : "text-black hover:text-[#b78a1b]"}`}
                   >
-                    <Icon className="text-[6vh] md:text-[3vw]"  />
+                    <Icon className="text-[6vh] md:text-[3vw]" />
                     {label}
                   </Link>
                 </motion.div>

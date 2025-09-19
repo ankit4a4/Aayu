@@ -7,6 +7,7 @@ import Image from "next/image";
 import banner1 from "../public/homepageImages/banner2-min.webp";
 import banner2 from "../public/homepageImages/banner3-min.webp";
 import banner4 from "../public/homepageImages/banner4-min.webp";
+import { useRouter } from "next/navigation";
 
 // Import slick slider CSS
 import "slick-carousel/slick/slick.css";
@@ -15,6 +16,7 @@ import "slick-carousel/slick/slick-theme.css";
 const banners = [banner1, banner2, banner4];
 
 const Home = () => {
+  const router = useRouter()
   const settings = {
     dots: true,
     infinite: true,
@@ -38,29 +40,32 @@ const Home = () => {
   return (
     <div className="w-screen h-screen overflow-hidden relative">
       <Slider {...settings}>
-        {/* Slide 1 */}
+        {/* Slide 1 - Welcome */}
         <div className="w-screen h-screen relative">
           <Image
             src={banner1}
             alt="Hero Banner"
             fill
-            priority // First slide fast load
+            priority
             quality={80}
             className="object-cover"
           />
           <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-6 md:px-16 text-white">
-            <h1 className="text-5xl md:text-[4.2vw] font-[400] mb-4 md:mb-[1.5vw]">Welcome to Aayu Yog Amrit</h1>
-            <h2 className="text-2xl md:text-[2.5vw] text-yellow-400 mb-4 md:mb-[1.5vw]">Discover Excellence in Every Step</h2>
+            <h1 className="text-5xl md:text-[4.2vw] font-[400] mb-4 md:mb-[1.5vw]">
+              Welcome to Aayu Yogamrit
+            </h1>
+            <h2 className="text-2xl md:text-[2.5vw] text-yellow-400 mb-4 md:mb-[1.5vw]">
+              Enhancing the Quality of Life
+            </h2>
             <p className="text-lg md:text-[1.4vw] md:w-[65%] md:leading-[1.6vw] mb-6 md:mb-[1.5vw]">
-              Join us in a journey of innovation and quality. Our platform provides top-notch solutions, guidance, and resources that empower you to achieve your goals.
+              “Aayu” means the life span of every living being. Our mission is to enhance and enrich
+              the Aayu of human civilization by offering authentic Ayurvedic solutions rooted in
+              nature’s best resources.
             </p>
-            <button className="px-8 py-3 md:py-[1vw] md:px-[3vw] bg-[#598034] rounded-lg text-white hover:transition md:text-[1.1vw]">
-              Get Started
-            </button>
           </div>
         </div>
 
-        {/* Slide 2 */}
+        {/* Slide 2 - About / Problem & Solution */}
         <div className="w-screen h-screen relative">
           <Image
             src={banner2}
@@ -73,15 +78,25 @@ const Home = () => {
           <div className="absolute inset-0 flex flex-col justify-center items-start text-start px-6 md:px-[5vw] text-white">
             <div className="relative z-10 w-[80%] md:pl-[3vw]">
               <h1 className="text-5xl md:text-[5vw] font-[400] mb-4 md:mb-[1.5vw]">About Us</h1>
-              <h2 className="text-2xl md:text-[2.7vw] font-light mb-8 md:mb-[1.9vw] text-white">Our Story, Our Mission</h2>
+              <h2 className="text-2xl md:text-[2.7vw] font-light mb-8 md:mb-[1.9vw] text-white">
+                Our Story, Our Mission
+              </h2>
               <p className="text-lg md:text-[1.4vw] md:pr-[30%] text-gray-100 mx-auto mb-10 md:mb-[2.3vw] leading-relaxed">
-                We are dedicated to delivering exceptional quality and service. Our journey started with a vision to make a meaningful impact. Learn more about our values, goals, and the team behind the success.
+                Awareness for Ayurveda is rising rapidly, yet the market lacks consistent quality
+                products. At Aayu Yogamrit, we solve this by sourcing every medicine from its
+                original place of harvest—where soil, climate, and nutrients are naturally balanced.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-start">
-                <button className="px-8 py-4 md:py-[1vw] md:px-[2vw] bg-[#598034] text-white font-semibold rounded-[1.1vw] md:text-[1.1vw] transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-yellow-400/30 flex items-center justify-center">
+                <button
+                  onClick={() => router.push("/about")}
+                  className="px-8 py-4 md:py-[1vw] md:px-[2vw] bg-[#598034] text-white font-semibold rounded-[1.1vw] md:text-[1.1vw] transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-yellow-400/30 flex items-center justify-center">
                   Know More
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
-                    <path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                    <path
+                      fillRule="evenodd"
+                      d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
+                      clipRule="evenodd"
+                    />
                   </svg>
                 </button>
               </div>
@@ -89,7 +104,7 @@ const Home = () => {
           </div>
         </div>
 
-        {/* Slide 3 */}
+        {/* Slide 3 - Products / USP */}
         <div className="w-screen h-screen relative">
           <Image
             src={banner4}
@@ -108,16 +123,17 @@ const Home = () => {
               <div className="relative group rounded-2xl h-[50vh] md:h-[30vw] overflow-hidden shadow-2xl transform transition duration-500 hover:scale-105">
                 <Image
                   src="https://doctorpizza.org/wp-content/uploads/2025/04/Herbal_Tea_Recipe_for_Lung_Detox.png"
-                  alt="Product 1"
+                  alt="Aayu Herbal Tea"
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover transform group-hover:scale-110 transition duration-700"
+                  onClick={() => router.push("/product")}
                 />
                 <div className="absolute bottom-0 left-0 right-0 p-2 md:p-6 z-20">
                   <div className="backdrop-blur-md bg-white/50 border md:p-[1.1vw] border-white/20 rounded-xl p-4">
                     <h3 className="text-lg md:text-[1.8vw] font-[500] mb-2 text-black">Aayu Herbal Tea</h3>
                     <p className="text-gray-700 text-sm md:text-[1.1vw] leading-relaxed">
-                      Boosts immunity & promotes relaxation with natural herbs.
+                      Boosts immunity, restores balance, and supports relaxation with natural herbs.
                     </p>
                   </div>
                 </div>
@@ -126,21 +142,27 @@ const Home = () => {
               <div className="relative hidden md:block group h-[50vh] md:h-[30vw] rounded-2xl overflow-hidden shadow-2xl transform transition duration-500 hover:scale-105">
                 <Image
                   src="https://wallpaperaccess.com/full/2680927.jpg"
-                  alt="Product 2"
+                  alt="Tulsi Drops"
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover transform group-hover:scale-110 transition duration-700"
+                   onClick={() => router.push("/product")}
                 />
                 <div className="absolute bottom-0 left-0 right-0 p-2 md:p-6 z-20">
                   <div className="backdrop-blur-md bg-white/50 border md:p-[1.1vw] border-white/20 rounded-xl p-4">
                     <h3 className="text-lg md:text-[1.8vw] font-[400] mb-2 text-black">Tulsi Drops</h3>
                     <p className="text-gray-700 text-sm md:text-[1.1vw] leading-relaxed">
-                      Pure Tulsi extract for respiratory & overall wellness.
+                      Pure Tulsi extract for respiratory health and overall wellness—trusted for
+                      generations.
                     </p>
                   </div>
                 </div>
               </div>
             </div>
+            <p className="mt-8 md:mt-12 text-lg md:text-[1.3vw] leading-relaxed text-gray-800 pr-[5vw]">
+              Our USP lies in delivering consistent quality Ayurvedic products that ensure better
+              results and make treatments truly trustworthy.
+            </p>
           </div>
         </div>
 
