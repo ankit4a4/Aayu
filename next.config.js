@@ -3,10 +3,7 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: [
-      "doctorpizza.org",     // ye wala tumhari product image ke liye
-      "wallpaperaccess.com", // ye wala background wallpaper ke liye
-    ],
+    domains: ["doctorpizza.org", "wallpaperaccess.com"],
   },
 };
 

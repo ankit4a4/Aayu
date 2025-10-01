@@ -19,6 +19,7 @@ import {
   FaFacebook,
 } from "react-icons/fa";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const links = [
   { label: "Home", href: "/", Icon: HiHome },
@@ -61,6 +62,8 @@ const Nav = () => {
     WebkitTextStroke: "0.4px black",
   };
 
+  const router = useRouter()
+
   return (
     <>
       {/* Desktop Sidebar */}
@@ -86,7 +89,7 @@ const Nav = () => {
 
         <div className="flex flex-col items-center justify-center flex-1">
           <p
-            className="text-[1.1vw] rotate-90 whitespace-nowrap font-medium tracking-widest"
+            className="text-[1vw] rotate-90 whitespace-nowrap font-medium tracking-widest"
             style={thinOutline}
           >
             Empowering Security
@@ -111,7 +114,7 @@ const Nav = () => {
 
       {/* Mobile Header */}
       <header className=" md:hidden fixed top-0 left-0 w-[100vw] h-[8vh] bg-white/90 shadow-md flex items-center justify-between px-[4vw] z-[61]">
-        <Image src="/photos/AayuLogo.png" alt="Logo" width={60} height={60} className="h-[6vh] w-auto" />
+        <Image onClick={() => router.push('/')} src="/photos/AayuLogo.png" alt="Logo" width={60} height={60} className="h-[6vh] w-auto" />
         <button onClick={() => setOpen(true)} className="text-[4vh] text-black">
           <HiBars3 />
         </button>
@@ -125,7 +128,7 @@ const Nav = () => {
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="fixed inset-0 bg-white/30 backdrop-blur-lg flex flex-col items-center justify-center gap-[8vh] z-[70] px-[6vw]"
+            className="fixed inset-0 bg-green-500/80 backdrop-blur-lg flex flex-col items-center justify-center gap-[8vh] z-[70] px-[6vw]"
           >
             {/* Close Button */}
             <button
@@ -143,7 +146,7 @@ const Nav = () => {
                   <Link
                     href={href}
                     onClick={() => setOpen(false)}
-                    className={`flex items-center gap-[6vw] text-[5vh] md:text-[2.5vw] font-bold transition-colors ${isActive ? "text-[#b78a1b]" : "text-black hover:text-[#b78a1b]"}`}
+                    className={`flex items-center gap-[6vw] text-[5vh] md:text-[2.5vw] font-[300] transition-colors ${isActive ? "text-[#b78a1b]" : "text-[#fff] hover:text-[#b78a1b]"}`}
                   >
                     <Icon className="text-[6vh] md:text-[3vw]" />
                     {label}

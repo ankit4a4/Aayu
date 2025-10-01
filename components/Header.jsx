@@ -5,7 +5,6 @@ import Image from "next/image";
 const Header = () => {
   const router = useRouter();
 
-  // Thin outline style for text
   const thinOutline = {
     color: "white",
     WebkitTextStroke: "0.3px black",
@@ -34,19 +33,21 @@ const Header = () => {
 
         {/* Center: Contact Info (Gmail + Phone) */}
         <div className="flex flex-col items-center justify-center flex-1 gap-[48vh] md:gap-[12vw]">
-          <p
+          <a
+            href="mailto:aayuyogamrit@gmail.com"
             className="text-[2vh] md:text-[1vw] -rotate-90 whitespace-nowrap font-semibold tracking-widest"
             style={thinOutline}
           >
-            info@aayu.com
-          </p>
+            aayuyogamrit@gmail.com
+          </a>
 
-          <p
+
+          <a href="tel:919012757050"
             className="text-[2vh] md:text-[1vw] -rotate-90 whitespace-nowrap font-semibold tracking-widest"
             style={thinOutline}
           >
-            +91 98765 43210
-          </p>
+            +91 9012757050
+          </a>
         </div>
       </aside>
     </section>

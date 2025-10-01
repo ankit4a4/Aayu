@@ -19,7 +19,8 @@ import {
   FaHeart,
   FaSeedling,
   FaGlobeAsia,
-  FaAward
+  FaAward,
+  FaWhatsapp
 } from "react-icons/fa";
 
 const AboutUs = () => {
@@ -329,14 +330,14 @@ const AboutUs = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button 
-            onClick={() => router.push("/product")}
-            className="px-8 py-3 bg-white text-green-800 font-semibold rounded-lg hover:bg-green-100 transition-colors duration-300 shadow-md">
+            <button
+              onClick={() => router.push("/product")}
+              className="px-8 py-3 bg-white text-green-800 font-semibold rounded-lg hover:bg-green-100 transition-colors duration-300 shadow-md">
               Explore Our Products
             </button>
-            <button 
+            <button
               onClick={() => router.push("/contact")}
-            className="px-8 py-3 bg-transparent border-2 border-white text-white font-semibold rounded-lg hover:bg-white/10 transition-colors duration-300">
+              className="px-8 py-3 bg-transparent border-2 border-white text-white font-semibold rounded-lg hover:bg-white/10 transition-colors duration-300">
               Contact Our Experts
             </button>
           </div>
@@ -346,6 +347,19 @@ const AboutUs = () => {
           </p>
         </div>
       </div>
+
+      <a
+        href="https://wa.me/919012757050?text=Hi!%20I%20have%20a%20question."
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed right-4 bottom-4 md:right-[6vw] md:bottom-[3.5vw] z-50"
+      >
+        <div
+          className="bg-[#25D366] rounded-full p-2 shadow-lg hover:scale-110 transition-transform flex items-center justify-center"
+        >
+          <FaWhatsapp className="text-white" size={28} />
+        </div>
+      </a>
     </div>
   );
 };

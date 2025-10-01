@@ -7,6 +7,8 @@ import Image from "next/image";
 import banner1 from "../public/homepageImages/banner2-min.webp";
 import banner2 from "../public/homepageImages/banner3-min.webp";
 import banner4 from "../public/homepageImages/banner4-min.webp";
+import product1 from "../public/product/amlacandy1.jpg"
+import product2 from "../public/product/salted-amla-candy.jpg"
 import { useRouter } from "next/navigation";
 
 // Import slick slider CSS
@@ -115,45 +117,44 @@ const Home = () => {
             className="object-cover"
           />
           <div className="absolute inset-0 flex flex-col justify-center text-white pl-3 pr-3 md:pl-[40%] py-12">
-            <h1 className="text-3xl md:text-[5vw] font-[400] tracking-wide mb-12 drop-shadow-lg">
-              Our <span className="text-[#5b7d44]">Products</span>
+            <h1 className="text-3xl md:mt-3 md:text-[5vw] font-[400] tracking-wide mb-12 drop-shadow-lg">
+              Our <span className="text-[#5b7d44] ">Products</span>
             </h1>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:pr-[8vw]">
               {/* Product 1 */}
-              <div className="relative group rounded-2xl h-[50vh] md:h-[30vw] overflow-hidden shadow-2xl transform transition duration-500 hover:scale-105">
+              <div className="relative group rounded-2xl h-[50vh] md:h-[28vw] overflow-hidden shadow-2xl transform transition duration-500 hover:scale-105">
                 <Image
-                  src="https://doctorpizza.org/wp-content/uploads/2025/04/Herbal_Tea_Recipe_for_Lung_Detox.png"
-                  alt="Aayu Herbal Tea"
+                  src={product1.src}
+                  alt="Amla Candy Sweet"
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover transform group-hover:scale-110 transition duration-700"
-                  onClick={() => router.push("/product")}
+                  onClick={() => router.push("/product/amla-candy-sweet")}
                 />
                 <div className="absolute bottom-0 left-0 right-0 p-2 md:p-6 z-20">
                   <div className="backdrop-blur-md bg-white/50 border md:p-[1.1vw] border-white/20 rounded-xl p-4">
-                    <h3 className="text-lg md:text-[1.8vw] font-[500] mb-2 text-black">Aayu Herbal Tea</h3>
+                    <h3 className="text-lg md:text-[1.8vw] font-[500] mb-2 text-black">Amla Candy Sweet</h3>
                     <p className="text-gray-700 text-sm md:text-[1.1vw] leading-relaxed">
-                      Boosts immunity, restores balance, and supports relaxation with natural herbs.
+                      Delicious sweet amla candy made with natural ingredients for daily wellness.
                     </p>
                   </div>
                 </div>
               </div>
               {/* Product 2 */}
-              <div className="relative hidden md:block group h-[50vh] md:h-[30vw] rounded-2xl overflow-hidden shadow-2xl transform transition duration-500 hover:scale-105">
+              <div className="relative hidden md:block group h-[50vh] md:h-[28vw] rounded-2xl overflow-hidden shadow-2xl transform transition duration-500 hover:scale-105">
                 <Image
-                  src="https://wallpaperaccess.com/full/2680927.jpg"
-                  alt="Tulsi Drops"
+                  src={product2.src}
+                  alt="Amla Candy Salted"
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover transform group-hover:scale-110 transition duration-700"
-                   onClick={() => router.push("/product")}
+                  onClick={() => router.push("/product/amla-candy-salted")}
                 />
                 <div className="absolute bottom-0 left-0 right-0 p-2 md:p-6 z-20">
                   <div className="backdrop-blur-md bg-white/50 border md:p-[1.1vw] border-white/20 rounded-xl p-4">
-                    <h3 className="text-lg md:text-[1.8vw] font-[400] mb-2 text-black">Tulsi Drops</h3>
+                    <h3 className="text-lg md:text-[1.8vw] font-[400] mb-2 text-black">Amla Candy Salted</h3>
                     <p className="text-gray-700 text-sm md:text-[1.1vw] leading-relaxed">
-                      Pure Tulsi extract for respiratory health and overall wellness—trusted for
-                      generations.
+                      Tangy salted amla candy that aids digestion and boosts immunity.
                     </p>
                   </div>
                 </div>

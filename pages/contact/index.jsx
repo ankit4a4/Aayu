@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { BsArrowRight, BsPhone, BsEnvelope, BsGeoAlt } from "react-icons/bs";
 import { useState } from "react";
 import banner from "../../public/contactPageImage/banner.webp";
-import { FaLeaf } from "react-icons/fa";
+import { FaLeaf, FaWhatsapp } from "react-icons/fa";
 
 const Contact = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -71,36 +71,24 @@ const Contact = () => {
                   <div className="flex-shrink-0 w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-700 mr-4">
                     <BsPhone className="text-lg" />
                   </div>
-                  <div>
+                  <a href="tel:919012757050">
                     <h3 className="font-semibold text-green-800">Phone</h3>
                     <p className="text-green-600"> </p>
                     <p className="text-green-600">+91 90127 57050</p>
-                  </div>
+                  </a>
                 </div>
 
                 <div className="flex items-start">
                   <div className="flex-shrink-0 w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-700 mr-4">
                     <BsEnvelope className="text-lg" />
                   </div>
-                  <div>
+                  <a href="mailto:aayuyogamrit@gmail.com">
                     <h3 className="font-semibold text-green-800">Email</h3>
-                    <p className="text-green-600">info@aayuyogamrit.com</p>
+                    <p className="text-green-600">aayuyogamrit@gmail.com</p>
                     <p className="text-green-600"> </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start">
-                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-700 mr-4">
-                    <BsGeoAlt className="text-lg" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-green-800">Address</h3>
-                    <p className="text-green-600">123 Ayurveda Road</p>
-                    <p className="text-green-600">Rishikesh, Uttarakhand 249201</p>
-                  </div>
+                  </a>
                 </div>
               </div>
-
               <div className="mt-8 pt-6 border-t border-green-100">
                 <h3 className="font-semibold text-green-800 mb-4">Business Hours</h3>
                 <div className="space-y-2">
@@ -229,20 +217,22 @@ const Contact = () => {
           transition={{ duration: 0.5, delay: 0.6 }}
           className="mt-16"
         >
-          <div className="bg-white rounded-xl shadow-md overflow-hidden h-96 md:h-[500px]">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3498.123456789012!2d77.123456789!3d30.123456789!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390xxxxxxx%3A0xabcdef123456!2sRishikesh%2C%20Uttarakhand%2C%20India!5e0!3m2!1sen!2sin!4v1690000000000!5m2!1sen!2sin"
-              width="100%"
-              height="100%"
-              style={{ border: 0 }}
-              allowFullScreen=""
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title="Google Map"
-            ></iframe>
-          </div>
+
         </motion.div>
       </div>
+
+      <a
+        href="https://wa.me/919012757050?text=Hi!%20I%20have%20a%20question."
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed right-4 bottom-4 md:right-[6vw] md:bottom-[3.5vw] z-50"
+      >
+        <div
+          className="bg-[#25D366] rounded-full p-2 shadow-lg hover:scale-110 transition-transform flex items-center justify-center"
+        >
+          <FaWhatsapp className="text-white" size={28} />
+        </div>
+      </a>
     </div>
   );
 };
