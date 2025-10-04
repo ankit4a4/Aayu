@@ -42,7 +42,7 @@ const Header = () => {
           </a>
 
 
-          <a href="tel:917207257757"
+          <a href="tel:7207257757"
             className="text-[2vh] md:text-[1vw] -rotate-90 whitespace-nowrap font-semibold tracking-widest"
             style={thinOutline}
           >

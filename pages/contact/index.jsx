@@ -84,7 +84,7 @@ const handleSubmit = (e) => {
                   <div className="flex-shrink-0 w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-700 mr-4">
                     <BsPhone className="text-lg" />
                   </div>
-                  <a href="tel:917207257757">
+                  <a href="tel:7207257757">
                     <h3 className="font-semibold text-green-800">Phone</h3>
                     <p className="text-green-600"> </p>
                     <p className="text-green-600">+91 72072 57757</p>
