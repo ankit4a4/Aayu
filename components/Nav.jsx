@@ -96,19 +96,22 @@ const Nav = () => {
           </p>
         </div>
 
+
+         {/* social media links  */}
         <div className="flex flex-col items-center gap-[1svw] mb-[2vh]">
-          <a href="https://linkedin.com" target="_blank" className="hover:text-accent transition-colors text-[1.5vw] p-[0.7vw] rounded-full bg-white border border-black" style={thinOutline}>
+          {/* <a href="https://linkedin.com" target="_blank" className="hover:text-accent transition-colors text-[1.5vw] p-[0.7vw] rounded-full bg-white border border-black" style={thinOutline}>
             <FaLinkedin className="text-black" />
+          </a> */}
+             <a href="https://facebook.com" target="_blank" className="hover:text-accent transition-colors text-[1.5vw] p-[0.7vw] rounded-full bg-white border border-black" style={thinOutline}>
+            <FaFacebook className="text-black" />
           </a>
           <a href="https://instagram.com" target="_blank" className="hover:text-accent transition-colors text-[1.5vw] p-[0.7vw] rounded-full bg-white border border-black" style={thinOutline}>
             <FaInstagram className="text-black" />
           </a>
-          <a href="https://twitter.com" target="_blank" className="hover:text-accent transition-colors text-[1.5vw] p-[0.7vw] rounded-full bg-white border border-black" style={thinOutline}>
+          {/* <a href="https://twitter.com" target="_blank" className="hover:text-accent transition-colors text-[1.5vw] p-[0.7vw] rounded-full bg-white border border-black" style={thinOutline}>
             <FaTwitter className="text-black" />
-          </a>
-          <a href="https://facebook.com" target="_blank" className="hover:text-accent transition-colors text-[1.5vw] p-[0.7vw] rounded-full bg-white border border-black" style={thinOutline}>
-            <FaFacebook className="text-black" />
-          </a>
+          </a> */}
+       
         </div>
       </aside>
 
@@ -158,18 +161,19 @@ const Nav = () => {
             {/* Social Icons (Mobile) */}
             <div className="absolute bottom-[10vh] flex flex-col items-center gap-[6vh] md:hidden">
               <div className="flex gap-[6vw]">
-                <a href="https://linkedin.com" target="_blank" className="hover:text-accent transition-transform hover:scale-110 text-[5vh]" style={thinOutline}>
-                  <FaLinkedin style={thinOutline} />
+                   <a href="https://facebook.com" target="_blank" className="hover:text-accent transition-transform hover:scale-110 text-[5vh]" style={thinOutline}>
+                  <FaFacebook style={thinOutline} />
                 </a>
+                {/* <a href="https://linkedin.com" target="_blank" className="hover:text-accent transition-transform hover:scale-110 text-[5vh]" style={thinOutline}>
+                  <FaLinkedin style={thinOutline} />
+                </a> */}
                 <a href="https://instagram.com" target="_blank" className="hover:text-accent transition-transform hover:scale-110 text-[5vh]" style={thinOutline}>
                   <FaInstagram style={thinOutline} />
                 </a>
-                <a href="https://twitter.com" target="_blank" className="hover:text-accent transition-transform hover:scale-110 text-[5vh]" style={thinOutline}>
+                {/* <a href="https://twitter.com" target="_blank" className="hover:text-accent transition-transform hover:scale-110 text-[5vh]" style={thinOutline}>
                   <FaTwitter style={thinOutline} />
-                </a>
-                <a href="https://facebook.com" target="_blank" className="hover:text-accent transition-transform hover:scale-110 text-[5vh]" style={thinOutline}>
-                  <FaFacebook style={thinOutline} />
-                </a>
+                </a> */}
+             
               </div>
             </div>
           </motion.div>

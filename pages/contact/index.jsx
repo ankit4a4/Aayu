@@ -3,26 +3,39 @@ import { BsArrowRight, BsPhone, BsEnvelope, BsGeoAlt } from "react-icons/bs";
 import { useState } from "react";
 import banner from "../../public/contactPageImage/banner.webp";
 import { FaLeaf, FaWhatsapp } from "react-icons/fa";
+import emailjs from "emailjs-com";
+
 
 const Contact = () => {
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    setIsLoading(true);
 
-    const myForm = event.target;
-    const formData = new FormData(myForm);
+const handleSubmit = (e) => {
+  e.preventDefault();
+  setIsLoading(true);
 
-    fetch("/", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams(formData).toString(),
-    })
-      .then(() => alert("Thank you. We will get back to you ASAP."))
-      .catch((error) => console.log(error))
-      .finally(() => setIsLoading(false));
-  };
+  const form = e.target;
+
+  emailjs
+    .sendForm(
+      "service_gc831ko",   // replace with your EmailJS service ID
+      "template_ul7ggwo",  // replace with your EmailJS template ID
+      form,
+      "qo6SLdXEADDbP3U52"    // replace with your EmailJS public key
+    )
+    .then(
+      () => {
+        alert("Thank you! Your message has been sent successfully.");
+        form.reset();
+      },
+      (error) => {
+        console.error("Email send failed:", error);
+        alert("Something went wrong. Please try again later.");
+      }
+    )
+    .finally(() => setIsLoading(false));
+};
+
 
   return (
     <div className="h-screen overflow-x-hidden overflow-y-auto w-full bg-green-50">
@@ -71,10 +84,10 @@ const Contact = () => {
                   <div className="flex-shrink-0 w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-700 mr-4">
                     <BsPhone className="text-lg" />
                   </div>
-                  <a href="tel:919012757050">
+                  <a href="tel:917207257757">
                     <h3 className="font-semibold text-green-800">Phone</h3>
                     <p className="text-green-600"> </p>
-                    <p className="text-green-600">+91 90127 57050</p>
+                    <p className="text-green-600">+91 72072 57757</p>
                   </a>
                 </div>
 
@@ -222,7 +235,7 @@ const Contact = () => {
       </div>
 
       <a
-        href="https://wa.me/919012757050?text=Hi!%20I%20have%20a%20question."
+        href="https://wa.me/917207257757?text=Hi!%20I%20have%20a%20question."
         target="_blank"
         rel="noopener noreferrer"
         className="fixed right-4 bottom-4 md:right-[6vw] md:bottom-[3.5vw] z-50"

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import { FaStar } from "react-icons/fa";
+import { FaStar,FaWhatsapp  } from "react-icons/fa";
 import product1 from "../../../public/product/amlacandy1.jpg";
 import product2 from "../../../public/product/amlacandy2.jpg";
 import product3 from "../../../public/product/amlacandy3.jpg";
@@ -175,6 +175,17 @@ const SingleProductPage = () => {
               Storage Instructions:
             </h3>
             <p className="text-green-700">{product.storage}</p>
+          </div>
+
+          <div className="mb-6">
+            <a
+              href={`https://wa.me/7207257757?text=I am%20interested%20in%20buying%20the%20product%20${product.name}`}
+              target="_blank"
+              className="px-8 py-4 md:py-[1vw] md:px-[4vw] bg-[#25D366] text-white font-semibold rounded-[1.1vw] md:text-[1.1vw] transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-green-400/30 flex items-center justify-center"
+            >
+              Chat on WhatsApp
+              <FaWhatsapp className="text-white text-xl md:text-[1.5vw] ml-2" />
+            </a>
           </div>
 
           {/* Other Products */}

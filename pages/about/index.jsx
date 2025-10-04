@@ -349,7 +349,7 @@ const AboutUs = () => {
       </div>
 
       <a
-        href="https://wa.me/919012757050?text=Hi!%20I%20have%20a%20question."
+        href="https://wa.me/917207257757?text=Hi!%20I%20have%20a%20question."
         target="_blank"
         rel="noopener noreferrer"
         className="fixed right-4 bottom-4 md:right-[6vw] md:bottom-[3.5vw] z-50"

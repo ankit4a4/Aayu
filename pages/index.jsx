@@ -1,24 +1,25 @@
-'use client'
+'use client';
 
 import React from "react";
 import Slider from "react-slick";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { FaWhatsapp } from "react-icons/fa"; 
 
 import banner1 from "../public/homepageImages/banner2-min.webp";
 import banner2 from "../public/homepageImages/banner3-min.webp";
 import banner4 from "../public/homepageImages/banner4-min.webp";
-import product1 from "../public/product/amlacandy1.jpg"
-import product2 from "../public/product/salted-amla-candy.jpg"
-import { useRouter } from "next/navigation";
+import product1 from "../public/product/amlacandy1.jpg";
+import product2 from "../public/product/salted-amla-candy.jpg";
 
-// Import slick slider CSS
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-const banners = [banner1, banner2, banner4];
-
 const Home = () => {
-  const router = useRouter()
+  const router = useRouter();
+
+
+
   const settings = {
     dots: true,
     infinite: true,
@@ -29,20 +30,21 @@ const Home = () => {
     autoplaySpeed: 5000,
     arrows: false,
     pauseOnHover: false,
-    appendDots: dots => (
+    appendDots: (dots) => (
       <div className="absolute bottom-[1.2vw] left-1/2 transform -translate-x-1/2 flex gap-[0.6vw] z-50">
         <ul className="flex gap-[0.6vw]"> {dots} </ul>
       </div>
     ),
-    customPaging: i => (
+    customPaging: () => (
       <button className="w-4 h-4 md:w-[1.5vw] md:h-[1.5vw] rounded-full transition-colors bg-white/50 border-2 border-white"></button>
-    )
+    ),
   };
 
   return (
     <div className="w-screen h-screen overflow-hidden relative">
       <Slider {...settings}>
-        {/* Slide 1 - Welcome */}
+
+        {/* 🌿 Slide 1 - Welcome */}
         <div className="w-screen h-screen relative">
           <Image
             src={banner1}
@@ -64,10 +66,20 @@ const Home = () => {
               the Aayu of human civilization by offering authentic Ayurvedic solutions rooted in
               nature’s best resources.
             </p>
+
+            {/* ✅ WhatsApp Button */}
+            <a
+            href="https://wa.me/7207257757?text=Hello!%20I%E2%80%99d%20like%20to%20know%20more%20about%20your%20Ayurvedic%20products."
+            target="_blank"
+              className="px-8 py-4 md:py-[1vw] md:px-[2vw] bg-[#25D366] text-white font-semibold rounded-[1.1vw] md:text-[1.1vw] transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-green-400/30 flex items-center justify-center"
+            >
+              Chat on WhatsApp
+              <FaWhatsapp className="text-white text-xl md:text-[1.5vw] ml-2" />
+            </a>
           </div>
         </div>
 
-        {/* Slide 2 - About / Problem & Solution */}
+        {/* 🌿 Slide 2 - About */}
         <div className="w-screen h-screen relative">
           <Image
             src={banner2}
@@ -91,22 +103,26 @@ const Home = () => {
               <div className="flex flex-col sm:flex-row gap-4 justify-start">
                 <button
                   onClick={() => router.push("/about")}
-                  className="px-8 py-4 md:py-[1vw] md:px-[2vw] bg-[#598034] text-white font-semibold rounded-[1.1vw] md:text-[1.1vw] transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-yellow-400/30 flex items-center justify-center">
+                  className="px-8 py-4 md:py-[1vw] md:px-[2vw] bg-[#598034] text-white font-semibold rounded-[1.1vw] md:text-[1.1vw] transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-yellow-400/30 flex items-center justify-center"
+                >
                   Know More
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
-                    <path
-                      fillRule="evenodd"
-                      d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
                 </button>
+
+                {/* ✅ WhatsApp Button */}
+                 <a
+            href="https://wa.me/7207257757?text=Hello!%20I%E2%80%99d%20like%20to%20know%20more%20about%20your%20Ayurvedic%20products."
+            target="_blank"
+              className="px-8 py-4 md:py-[1vw] md:px-[2vw] bg-[#25D366] text-white font-semibold rounded-[1.1vw] md:text-[1.1vw] transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-green-400/30 flex items-center justify-center"
+            >
+              Chat on WhatsApp
+              <FaWhatsapp className="text-white text-xl md:text-[1.5vw] ml-2" />
+            </a>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Slide 3 - Products / USP */}
+        {/* 🌿 Slide 3 - Products / USP */}
         <div className="w-screen h-screen relative">
           <Image
             src={banner4}
@@ -116,13 +132,15 @@ const Home = () => {
             loading="lazy"
             className="object-cover"
           />
+
           <div className="absolute inset-0 flex flex-col justify-center text-white pl-3 pr-3 md:pl-[40%] py-12">
             <h1 className="text-3xl md:mt-3 md:text-[5vw] font-[400] tracking-wide mb-12 drop-shadow-lg">
-              Our <span className="text-[#5b7d44] ">Products</span>
+              Our <span className="text-[#5b7d44]">Products</span>
             </h1>
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:pr-[8vw]">
               {/* Product 1 */}
-              <div className="relative group rounded-2xl h-[50vh] md:h-[28vw] overflow-hidden shadow-2xl transform transition duration-500 hover:scale-105">
+              <div className="relative group rounded-2xl h-[50vh] md:h-[25vw] overflow-hidden shadow-2xl transform transition duration-500 hover:scale-105">
                 <Image
                   src={product1.src}
                   alt="Amla Candy Sweet"
@@ -140,8 +158,9 @@ const Home = () => {
                   </div>
                 </div>
               </div>
+
               {/* Product 2 */}
-              <div className="relative hidden md:block group h-[50vh] md:h-[28vw] rounded-2xl overflow-hidden shadow-2xl transform transition duration-500 hover:scale-105">
+              <div className="relative hidden md:block group h-[50vh] md:h-[25vw] rounded-2xl overflow-hidden shadow-2xl transform transition duration-500 hover:scale-105">
                 <Image
                   src={product2.src}
                   alt="Amla Candy Salted"
@@ -160,10 +179,23 @@ const Home = () => {
                 </div>
               </div>
             </div>
-            <p className="mt-8 md:mt-12 text-lg md:text-[1.3vw] leading-relaxed text-gray-800 pr-[5vw]">
+
+            <p className="text-lg md:text-[1.3vw] md:pr-[30%] leading-relaxed mt-8 md:mt-12 text-gray-600">
               Our USP lies in delivering consistent quality Ayurvedic products that ensure better
               results and make treatments truly trustworthy.
             </p>
+
+            {/* ✅ WhatsApp Button */}
+            <div className="mt-6 flex justify-center md:justify-start md:pl-0">
+               <a
+            href="https://wa.me/7207257757?text=Hello!%20I%E2%80%99d%20like%20to%20know%20more%20about%20your%20Ayurvedic%20products."
+            target="_blank"
+              className="px-8 py-4 md:py-[1vw] md:px-[2vw] bg-[#25D366] text-white font-semibold rounded-[1.1vw] md:text-[1.1vw] transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-green-400/30 flex items-center justify-center"
+            >
+              Chat on WhatsApp
+              <FaWhatsapp className="text-white text-xl md:text-[1.5vw] ml-2" />
+            </a>
+            </div>
           </div>
         </div>
 
