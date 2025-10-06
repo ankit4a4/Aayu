@@ -6,8 +6,8 @@ import "slick-carousel/slick/slick-theme.css";
 import { FaLeaf, FaStar, FaHeart, FaShoppingCart } from "react-icons/fa";
 import img from "../../public/productPageImage/banner.webp";
 import { useRouter } from "next/navigation";
-import product1 from "../../public/product/amlacandy1.jpg"
-import product2 from "../../public/product/salted-amla-candy.jpg"
+import product1 from "../../public/product/amlacandy1.jpg";
+import product2 from "../../public/product/salted-amla-candy.jpg";
 
 const products = [
   {
@@ -30,7 +30,6 @@ const products = [
 
 const Product = () => {
   const router = useRouter();
-
 
   return (
     <div className="w-full h-screen overflow-y-auto overflow-x-hidden bg-green-50">
@@ -74,7 +73,7 @@ const Product = () => {
       </div>
 
       {/* Featured Products Section */}
-      <section className="py-8 md:py-16  px-4 sm:px-6 lg:px-8">
+      <section className="py-8 md:py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-green-800 mb-4">Featured Products</h2>
@@ -83,10 +82,8 @@ const Product = () => {
             </p>
           </div>
 
-
-
           {/* Desktop Featured Products Grid */}
-          <div className=" grid grid-cols-1 md:grid-cols-2 gap-8 md:mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:mb-16">
             {products.map((product, i) => (
               <motion.div
                 key={i}
@@ -96,7 +93,11 @@ const Product = () => {
                 className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 border border-green-100"
               >
                 <div className="relative md:h-[50vh] overflow-hidden">
-                  <img src={product.img} alt={product.name} className="w-full h-full object-contain transition-transform duration-500 hover:scale-105" />
+                  <img
+                    src={product.img}
+                    alt={product.name}
+                    className="w-full h-full object-contain transition-transform duration-500 hover:scale-105"
+                  />
                 </div>
                 <div className="p-6">
                   <div className="flex justify-between items-start mb-3">
@@ -114,12 +115,20 @@ const Product = () => {
                       </span>
                     ))}
                   </div>
-                  <button
-                    className="w-full bg-green-600 text-white py-2 rounded-lg font-semibold hover:bg-green-700 transition"
-                    onClick={() => router.push(`${product.slug}`)}
-                  >
-                    Read More
-                  </button>
+                  <div className="flex  gap-3">
+                    <button
+                      className="w-full bg-green-600 text-white py-3 rounded-lg font-semibold hover:bg-green-700 transition"
+                      onClick={() => router.push(`${product.slug}`)}
+                    >
+                      Read More
+                    </button>
+                    <button
+                      className="w-full bg-[#b88b1b] text-white py-3 rounded-lg font-semibold flex items-center justify-center gap-2 hover:bg-yellow-500 transition"
+                      onClick={() => alert(`Added ${product.name} to cart!`)}
+                    >
+                      <FaShoppingCart /> Add to Cart
+                    </button>
+                  </div>
                 </div>
               </motion.div>
             ))}
