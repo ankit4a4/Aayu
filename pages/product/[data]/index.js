@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import { FaStar,FaWhatsapp  } from "react-icons/fa";
+import { FaStar, FaWhatsapp, FaShoppingCart } from "react-icons/fa";
 import product1 from "../../../public/product/amlacandy1.jpg";
 import product2 from "../../../public/product/amlacandy2.jpg";
 import product3 from "../../../public/product/amlacandy3.jpg";
@@ -56,14 +56,13 @@ const SingleProductPage = () => {
   const router = useRouter();
   const { data: slug } = router.query;
   const [product, setProduct] = useState(null);
+  const [mainImage, setMainImage] = useState("");
 
   useEffect(() => {
     if (!slug) return;
     const found = products.find((p) => p.slug === slug);
     setProduct(found);
   }, [slug]);
-
-  const [mainImage, setMainImage] = useState("");
 
   useEffect(() => {
     if (product) setMainImage(product.images[0]);
@@ -85,8 +84,7 @@ const SingleProductPage = () => {
           backgroundPosition: "center",
         }}
       >
-        <div className="absolute inset-0 bg-black/60"></div>{" "}
-        {/* black overlay */}
+        <div className="absolute inset-0 bg-black/60"></div>
         <h1 className="relative text-white text-4xl md:text-5xl font-bold">
           {product.name}
         </h1>
@@ -177,7 +175,8 @@ const SingleProductPage = () => {
             <p className="text-green-700">{product.storage}</p>
           </div>
 
-          <div className="mb-6">
+          {/* WhatsApp Button */}
+          <div className="mb-4 flex items-start gap-4 justify-start">
             <a
               href={`https://wa.me/7207257757?text=I am%20interested%20in%20buying%20the%20product%20${product.name}`}
               target="_blank"
@@ -186,7 +185,17 @@ const SingleProductPage = () => {
               Chat on WhatsApp
               <FaWhatsapp className="text-white text-xl md:text-[1.5vw] ml-2" />
             </a>
+
+            <button
+              onClick={() => alert(`Added ${product.name} to cart!`)}
+              className="px-8 py-4 md:py-[1vw] md:px-[4vw] bg-[#b88b1c] text-white font-semibold rounded-[1.1vw] md:text-[1.1vw] transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-[#b88b1c]/50 flex items-center justify-center gap-2"
+            >
+              <FaShoppingCart /> Add to Cart
+            </button>
           </div>
+
+          {/* Add to Cart Button */}
+          <div className="mb-6"></div>
 
           {/* Other Products */}
           {otherProducts.length > 0 && (
