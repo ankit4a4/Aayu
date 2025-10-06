@@ -4,7 +4,7 @@ import React from "react";
 import Slider from "react-slick";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { FaWhatsapp } from "react-icons/fa"; 
+import { FaWhatsapp } from "react-icons/fa";
 
 import banner1 from "../public/homepageImages/banner2-min.webp";
 import banner2 from "../public/homepageImages/banner3-min.webp";
@@ -69,8 +69,8 @@ const Home = () => {
 
             {/* ✅ WhatsApp Button */}
             <a
-            href="https://wa.me/7207257757?text=Hello!%20I%E2%80%99d%20like%20to%20know%20more%20about%20your%20Ayurvedic%20products."
-            target="_blank"
+              href="https://wa.me/7207257757?text=Hello!%20I%E2%80%99d%20like%20to%20know%20more%20about%20your%20Ayurvedic%20products."
+              target="_blank"
               className="px-8 py-4 md:py-[1vw] md:px-[2vw] bg-[#25D366] text-white font-semibold rounded-[1.1vw] md:text-[1.1vw] transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-green-400/30 flex items-center justify-center"
             >
               Chat on WhatsApp
@@ -109,14 +109,14 @@ const Home = () => {
                 </button>
 
                 {/* ✅ WhatsApp Button */}
-                 <a
-            href="https://wa.me/7207257757?text=Hello!%20I%E2%80%99d%20like%20to%20know%20more%20about%20your%20Ayurvedic%20products."
-            target="_blank"
-              className="px-8 py-4 md:py-[1vw] md:px-[2vw] bg-[#25D366] text-white font-semibold rounded-[1.1vw] md:text-[1.1vw] transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-green-400/30 flex items-center justify-center"
-            >
-              Chat on WhatsApp
-              <FaWhatsapp className="text-white text-xl md:text-[1.5vw] ml-2" />
-            </a>
+                <a
+                  href="https://wa.me/7207257757?text=Hello!%20I%E2%80%99d%20like%20to%20know%20more%20about%20your%20Ayurvedic%20products."
+                  target="_blank"
+                  className="px-8 py-4 md:py-[1vw] md:px-[2vw] bg-[#25D366] text-white font-semibold rounded-[1.1vw] md:text-[1.1vw] transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-green-400/30 flex items-center justify-center"
+                >
+                  Chat on WhatsApp
+                  <FaWhatsapp className="text-white text-xl md:text-[1.5vw] ml-2" />
+                </a>
               </div>
             </div>
           </div>
@@ -140,13 +140,13 @@ const Home = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:pr-[8vw]">
               {/* Product 1 */}
-              <div className="relative group rounded-2xl h-[50vh] md:h-[25vw] overflow-hidden shadow-2xl transform transition duration-500 hover:scale-105">
+              <div className="relative group bg-white rounded-2xl h-[50vh] md:h-[22vw] overflow-hidden shadow-2xl transform transition duration-500 hover:scale-105">
                 <Image
                   src={product1.src}
                   alt="Amla Candy Sweet"
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-cover transform group-hover:scale-110 transition duration-700"
+                  className="object-contain transform group-hover:scale-110 transition duration-700"
                   onClick={() => router.push("/product/amla-candy-sweet")}
                 />
                 <div className="absolute bottom-0 left-0 right-0 p-2 md:p-6 z-20">
@@ -160,13 +160,13 @@ const Home = () => {
               </div>
 
               {/* Product 2 */}
-              <div className="relative hidden md:block group h-[50vh] md:h-[25vw] rounded-2xl overflow-hidden shadow-2xl transform transition duration-500 hover:scale-105">
+              <div className="relative hidden md:block bg-white group h-[50vh] md:h-[22vw] rounded-2xl overflow-hidden shadow-2xl transform transition duration-500 hover:scale-105">
                 <Image
                   src={product2.src}
                   alt="Amla Candy Salted"
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-cover transform group-hover:scale-110 transition duration-700"
+                  className="object-contain transform group-hover:scale-110 transition duration-700"
                   onClick={() => router.push("/product/amla-candy-salted")}
                 />
                 <div className="absolute bottom-0 left-0 right-0 p-2 md:p-6 z-20">
@@ -187,14 +187,14 @@ const Home = () => {
 
             {/* ✅ WhatsApp Button */}
             <div className="mt-6 flex justify-center md:justify-start md:pl-0">
-               <a
-            href="https://wa.me/7207257757?text=Hello!%20I%E2%80%99d%20like%20to%20know%20more%20about%20your%20Ayurvedic%20products."
-            target="_blank"
-              className="px-8 py-4 md:py-[1vw] md:px-[2vw] bg-[#25D366] text-white font-semibold rounded-[1.1vw] md:text-[1.1vw] transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-green-400/30 flex items-center justify-center"
-            >
-              Chat on WhatsApp
-              <FaWhatsapp className="text-white text-xl md:text-[1.5vw] ml-2" />
-            </a>
+              <a
+                href="https://wa.me/7207257757?text=Hello!%20I%E2%80%99d%20like%20to%20know%20more%20about%20your%20Ayurvedic%20products."
+                target="_blank"
+                className="px-8 py-4 md:py-[1vw] md:px-[2vw] bg-[#25D366] text-white font-semibold rounded-[1.1vw] md:text-[1.1vw] transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-green-400/30 flex items-center justify-center"
+              >
+                Chat on WhatsApp
+                <FaWhatsapp className="text-white text-xl md:text-[1.5vw] ml-2" />
+              </a>
             </div>
           </div>
         </div>

@@ -56,7 +56,7 @@ export default function Index() {
     };
 
     return (
-        <div className="h-screen overflow-y-auto bg-gradient-to-br from-[#fdf6e7] to-[#e7f3e9] py-8 px-4">
+        <div className="h-screen overflow-y-auto pt-28 pd:mt-0 bg-gradient-to-br from-[#fdf6e7] to-[#e7f3e9] py-8 px-4">
             <div className="max-w-4xl mx-auto">
                 {/* Header */}
                 <div className="text-center mb-8">
@@ -73,12 +73,13 @@ export default function Index() {
                 <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
                     <div className="p-8">
                         {/* Cart Header */}
-                        <div className="mb-8 flex justify-between items-center">
+                        <div className="mb-8 md:flex justify-between items-center">
                             <div>
                                 <h2 className="text-3xl font-bold text-[#b98820] mb-2">Your Cart Items</h2>
                                 <div className="w-20 h-1 bg-gradient-to-r from-[#b98820] to-[#53914c] rounded-full"></div>
                             </div>
-                            <span className="bg-[#e9f5eb] text-[#53914c] text-sm font-medium px-3 py-1 rounded-full">
+                            <br className="md:hidden flex" />
+                            <span className="bg-[#e9f5eb] mt-4 md:mt-0 text-[#53914c] text-sm font-medium px-3 py-1 rounded-full">
                                 {cartItems.length} products
                             </span>
                         </div>
@@ -88,11 +89,7 @@ export default function Index() {
                             {cartItems.map(item => (
                                 <div key={item.id} className="bg-gray-50 rounded-2xl p-6 shadow-md hover:shadow-lg transition-shadow duration-200 border border-gray-200">
                                     <div className="flex items-center space-x-6">
-                                        <img
-                                            src={item.img}
-                                            alt={item.title}
-                                            className="w-24 h-24 object-cover rounded-xl shadow-md"
-                                        />
+
 
                                         <div className="flex-grow">
                                             <div className="flex justify-between items-start">
@@ -116,10 +113,10 @@ export default function Index() {
                                             </div>
 
                                             {/* Quantity Controls */}
-                                            <div className="flex items-center justify-between mt-4">
+                                            <div className="block md:flex items-center justify-between mt-4">
                                                 <div className="flex items-center space-x-4">
                                                     <span className="text-gray-600 font-medium">Quantity:</span>
-                                                    <div className="flex items-center space-x-3 bg-white px-3 py-2 rounded-lg border">
+                                                    <div className="flex items-center space-x-3  bg-white px-3 py-2 rounded-lg border">
                                                         <button
                                                             onClick={() => decrement(item.id)}
                                                             className="w-8 h-8 flex items-center justify-center bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors duration-200"
@@ -139,7 +136,7 @@ export default function Index() {
                                                 </div>
 
                                                 {/* Item Total */}
-                                                <div className="text-right">
+                                                <div className="text-right mt-6 md:mt-0">
                                                     <span className="text-gray-600 text-sm">Item Total:</span>
                                                     <div className="text-2xl font-bold text-[#53914c]">
                                                         ₹{item.price * item.quantity}
@@ -191,7 +188,9 @@ export default function Index() {
 
                 {/* Footer Note */}
                 <div className="text-center mt-6 text-gray-500 text-sm">
-                    <p>🔒 Secure checkout • 🚚 Free shipping • 🔄 Easy returns</p>
+                    <p style={{
+                        color: "black",
+                    }}>🔒 Secure checkout • 🚚 Free shipping • 🔄 Easy returns</p>
                 </div>
             </div>
         </div>

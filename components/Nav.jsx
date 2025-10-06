@@ -10,7 +10,7 @@ import {
   HiBars3,
 } from "react-icons/hi2";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaHandPointDown } from "react-icons/fa";
+import { FaHandPointDown, FaShoppingCart } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
 import {
   FaLinkedin,
@@ -26,6 +26,7 @@ const links = [
   { label: "About", href: "/about", Icon: HiUser },
   { label: "Product", href: "/product", Icon: HiRectangleGroup },
   { label: "Contact", href: "/contact", Icon: HiEnvelope },
+  { label: "Cart", href: "/cart", Icon: FaShoppingCart },
 ];
 
 // Cinematic slow zoom popup
@@ -69,6 +70,12 @@ const Nav = () => {
       {/* Desktop Sidebar */}
       <aside className="hidden md:flex fixed top-0 right-0 h-[100vh] w-[6vw] bg-transparent flex-col items-center justify-between py-[6vh] z-[61]">
         <div className="flex flex-col items-center">
+
+          <div className="w-[3vw] h-[3vw] relative bg-white  flex items-center justify-center rounded-full border border-[#c5a05d]  mb-[1vw] cursor-pointer" onClick={() => router.push('/cart')}>
+            <span className=" bg-white rounded-full border border-black p-1 h-[1.5vw] w-[1.5vw] flex items-center justify-center absolute mr-[-2vw] mt-[-2vw]  ">1</span>
+            <FaShoppingCart className="text-[#c5a05d] text-[1.7vw]" />
+          </div>
+
           <motion.div
             className="mt-[2vh] mb-[1.5vh]"
             style={thinOutline}
@@ -131,7 +138,7 @@ const Nav = () => {
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="fixed inset-0 bg-green-500/80 backdrop-blur-lg flex flex-col items-center justify-center gap-[8vh] z-[70] px-[6vw]"
+            className="fixed inset-0 bg-green-500/80 backdrop-blur-lg flex flex-col items-center justify-center gap-[4vh] md:gap-[8vh] z-[70] px-[6vw]"
           >
             {/* Close Button */}
             <button
