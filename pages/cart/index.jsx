@@ -88,11 +88,7 @@ export default function Index() {
                             {cartItems.map(item => (
                                 <div key={item.id} className="bg-gray-50 rounded-2xl p-6 shadow-md hover:shadow-lg transition-shadow duration-200 border border-gray-200">
                                     <div className="flex items-center space-x-6">
-                                        <img
-                                            src={item.img}
-                                            alt={item.title}
-                                            className="w-24 h-24 object-cover rounded-xl shadow-md"
-                                        />
+
 
                                         <div className="flex-grow">
                                             <div className="flex justify-between items-start">
@@ -191,7 +187,9 @@ export default function Index() {
 
                 {/* Footer Note */}
                 <div className="text-center mt-6 text-gray-500 text-sm">
-                    <p>🔒 Secure checkout • 🚚 Free shipping • 🔄 Easy returns</p>
+                    <p style={{
+                        color: "black",
+                    }}>🔒 Secure checkout • 🚚 Free shipping • 🔄 Easy returns</p>
                 </div>
             </div>
         </div>
