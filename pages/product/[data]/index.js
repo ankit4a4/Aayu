@@ -9,11 +9,13 @@ import secondProduct1 from "../../../public/product/salted-amla-candy.jpg";
 import secondProduct2 from "../../../public/product/salted-amla-candy1.webp";
 import secondProduct3 from "../../../public/product/salted-amla-candy3.jpg";
 import secondProduct4 from "../../../public/product/salted-amla-candy4.jpg";
-
+import api from "../../../utils/api";
+import toast from "react-hot-toast";
 const products = [
   {
     slug: "amla-candy-sweet",
     name: "Amla Candy Sweet",
+    size: "500mg",
     desc: "Delicious sweet amla candy made with natural ingredients for daily wellness. Perfect snack for boosting immunity and maintaining energy throughout the day.",
     images: [product1.src, product2.src, product3.src, product4.src],
     rating: 4.9,
@@ -32,6 +34,7 @@ const products = [
   {
     slug: "amla-candy-salted",
     name: "Amla Candy Salted",
+    size: "500mg",
     desc: "Tangy salted amla candy that aids digestion and boosts immunity. A perfect snack with a tangy twist for all age groups.",
     images: [
       secondProduct1.src,
@@ -72,6 +75,28 @@ const SingleProductPage = () => {
     return <div className="text-center py-20">Loading product...</div>;
 
   const otherProducts = products.filter((p) => p.slug !== slug);
+
+  // add to cart function 
+  const handleAddToCart = async () => {
+  try {
+    const response = await api.post("/cart/add", {
+      items: [
+        {
+          name: product.name,   // ✅ product name
+          quantity: 1,               // ✅ quantity
+          price: 100            // ✅ placeholder price, replace with real price later
+        }
+      ]
+    });
+
+    console.log("Cart updated:", response.data);
+    toast.success("Product added to cart!");
+   
+  } catch (error) {
+    console.error("Add to cart error:", error);
+    toast.error("Failed to add product to cart.");
+  }
+};
 
   return (
     <div className="h-screen overflow-y-auto">
@@ -120,11 +145,16 @@ const SingleProductPage = () => {
         <div>
           <h1 className="text-3xl font-bold text-green-800 mb-2">
             {product.name}
+             <span className="text-sm font-medium text-white bg-green-300 px-2 py-1 rounded-full ml-2">
+            {product.size || "Size N/A"}
+          </span>
           </h1>
+         
           <div className="flex items-center mb-4">
             <FaStar className="text-yellow-400 mr-1" />
             <span className="text-green-700">{product.rating}</span>
           </div>
+          
           <p className="text-green-600 mb-4">{product.desc}</p>
 
           {/* Benefits */}
@@ -187,7 +217,7 @@ const SingleProductPage = () => {
             </a>
 
             <button
-              onClick={() => alert(`Added ${product.name} to cart!`)}
+             onClick={handleAddToCart}
               className="px-8 py-4 md:py-[1vw] md:px-[4vw] bg-[#b88b1c] text-white font-semibold rounded-[1.1vw] md:text-[1.1vw] transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-[#b88b1c]/50 flex items-center justify-center gap-2"
             >
               <FaShoppingCart /> Add to Cart
