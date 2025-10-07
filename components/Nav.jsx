@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState ,useEffect} from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
@@ -20,6 +20,7 @@ import {
 } from "react-icons/fa";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import api from "../utils/api";
 
 const links = [
   { label: "Home", href: "/", Icon: HiHome },
@@ -56,6 +57,7 @@ const itemVariants = {
 const Nav = () => {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+   const [cartCount, setCartCount] = useState(0);
 
   // Thin outline style for text and icons
   const thinOutline = {
@@ -65,6 +67,22 @@ const Nav = () => {
 
   const router = useRouter()
 
+
+  // fetch the cart count from backend
+   useEffect(() => {
+    const fetchCart = async () => {
+      try {
+        const res = await api.get("/cart/get");
+        const items = res.data.cart?.items || [];
+        const totalCount = items.reduce((acc, item) => acc + item.quantity, 0);
+        setCartCount(totalCount);
+      } catch (err) {
+        console.error("Failed to fetch cart count", err);
+      }
+    };
+    fetchCart();
+  }, []);
+
   return (
     <>
       {/* Desktop Sidebar */}
@@ -72,7 +90,11 @@ const Nav = () => {
         <div className="flex flex-col items-center">
 
           <div className="w-[3vw] h-[3vw] relative bg-white  flex items-center justify-center rounded-full border border-[#c5a05d]  mb-[1vw] cursor-pointer" onClick={() => router.push('/cart')}>
-            <span className=" bg-white rounded-full border border-black p-1 h-[1.5vw] w-[1.5vw] flex items-center justify-center absolute mr-[-2vw] mt-[-2vw]  ">1</span>
+           {cartCount > 0 && (
+              <span className="bg-red-500  text-white rounded-full  p-1 h-[1.5vw] w-[1.5vw] flex items-center justify-center absolute mr-[-2vw] mt-[-2vw]  font-bold">
+                {cartCount}
+              </span>
+            )}
             <FaShoppingCart className="text-[#c5a05d] text-[1.7vw]" />
           </div>
 

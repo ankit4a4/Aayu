@@ -9,7 +9,8 @@ import secondProduct1 from "../../../public/product/salted-amla-candy.jpg";
 import secondProduct2 from "../../../public/product/salted-amla-candy1.webp";
 import secondProduct3 from "../../../public/product/salted-amla-candy3.jpg";
 import secondProduct4 from "../../../public/product/salted-amla-candy4.jpg";
-
+import api from "../../../utils/api";
+import toast from "react-hot-toast";
 const products = [
   {
     slug: "amla-candy-sweet",
@@ -72,6 +73,28 @@ const SingleProductPage = () => {
     return <div className="text-center py-20">Loading product...</div>;
 
   const otherProducts = products.filter((p) => p.slug !== slug);
+
+  // add to cart function 
+  const handleAddToCart = async () => {
+  try {
+    const response = await api.post("/cart/add", {
+      items: [
+        {
+          name: product.name,   // ✅ product name
+          quantity: 1,               // ✅ quantity
+          price: 100            // ✅ placeholder price, replace with real price later
+        }
+      ]
+    });
+
+    console.log("Cart updated:", response.data);
+    toast.success("Product added to cart!");
+   
+  } catch (error) {
+    console.error("Add to cart error:", error);
+    toast.error("Failed to add product to cart.");
+  }
+};
 
   return (
     <div className="h-screen overflow-y-auto">
@@ -187,7 +210,7 @@ const SingleProductPage = () => {
             </a>
 
             <button
-              onClick={() => alert(`Added ${product.name} to cart!`)}
+             onClick={handleAddToCart}
               className="px-8 py-4 md:py-[1vw] md:px-[4vw] bg-[#b88b1c] text-white font-semibold rounded-[1.1vw] md:text-[1.1vw] transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-[#b88b1c]/50 flex items-center justify-center gap-2"
             >
               <FaShoppingCart /> Add to Cart
