@@ -15,6 +15,7 @@ const products = [
   {
     slug: "amla-candy-sweet",
     name: "Amla Candy Sweet",
+    size: "500mg",
     desc: "Delicious sweet amla candy made with natural ingredients for daily wellness. Perfect snack for boosting immunity and maintaining energy throughout the day.",
     images: [product1.src, product2.src, product3.src, product4.src],
     rating: 4.9,
@@ -33,6 +34,7 @@ const products = [
   {
     slug: "amla-candy-salted",
     name: "Amla Candy Salted",
+    size: "500mg",
     desc: "Tangy salted amla candy that aids digestion and boosts immunity. A perfect snack with a tangy twist for all age groups.",
     images: [
       secondProduct1.src,
@@ -143,11 +145,16 @@ const SingleProductPage = () => {
         <div>
           <h1 className="text-3xl font-bold text-green-800 mb-2">
             {product.name}
+             <span className="text-sm font-medium text-white bg-green-300 px-2 py-1 rounded-full ml-2">
+            {product.size || "Size N/A"}
+          </span>
           </h1>
+         
           <div className="flex items-center mb-4">
             <FaStar className="text-yellow-400 mr-1" />
             <span className="text-green-700">{product.rating}</span>
           </div>
+          
           <p className="text-green-600 mb-4">{product.desc}</p>
 
           {/* Benefits */}

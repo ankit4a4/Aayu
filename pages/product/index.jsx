@@ -1,13 +1,12 @@
 "use client";
 import { motion } from "framer-motion";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import { FaLeaf, FaStar, FaHeart, FaShoppingCart } from "react-icons/fa";
+import { FaLeaf, FaStar, FaShoppingCart } from "react-icons/fa";
 import img from "../../public/productPageImage/banner.webp";
 import { useRouter } from "next/navigation";
 import product1 from "../../public/product/amlacandy1.jpg";
 import product2 from "../../public/product/salted-amla-candy.jpg";
+import api from "../../utils/api";
+import toast from "react-hot-toast";
 
 const products = [
   {
@@ -17,6 +16,8 @@ const products = [
     img: product1.src,
     rating: 4.9,
     benefits: ["Rich in Vitamin C", "Immunity Booster", "Tasty & Healthy"],
+    price: 100, // Add actual product price
+    size:"500mg",
   },
   {
     name: "Amla Candy Salted",
@@ -25,11 +26,35 @@ const products = [
     img: product2.src,
     rating: 4.8,
     benefits: ["Improves Digestion", "Natural Antioxidant", "Travel Friendly"],
+    price: 120, // Add actual product price
+    size:"500mg",
+
   },
 ];
 
 const Product = () => {
   const router = useRouter();
+
+  // ✅ Add product to cart
+  const handleAddToCart = async (product) => {
+    try {
+      const response = await api.post("/cart/add", {
+        items: [
+          {
+            name: product.name,
+            quantity: 1,
+            price: product.price,
+          },
+        ],
+      });
+
+      console.log("Cart updated:", response.data);
+      toast.success(`${product.name} added to cart!`);
+    } catch (error) {
+      console.error("Add to cart error:", error);
+      toast.error("Failed to add product to cart.");
+    }
+  };
 
   return (
     <div className="w-full h-screen overflow-y-auto overflow-x-hidden bg-green-50">
@@ -58,7 +83,11 @@ const Product = () => {
             </h1>
             <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
               Discover our range of{" "}
-              <span className="font-semibold">100% natural Ayurvedic products</span>, crafted to bring balance, health, and vitality into your daily life.
+              <span className="font-semibold">
+                100% natural Ayurvedic products
+              </span>
+              , crafted to bring balance, health, and vitality into your daily
+              life.
             </p>
             <motion.p
               initial={{ opacity: 0 }}
@@ -76,9 +105,12 @@ const Product = () => {
       <section className="py-8 md:py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-green-800 mb-4">Featured Products</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-green-800 mb-4">
+              Featured Products
+            </h2>
             <p className="text-lg text-green-600 max-w-3xl mx-auto">
-              Our most popular Ayurvedic formulations, crafted with care and traditional wisdom
+              Our most popular Ayurvedic formulations, crafted with care and
+              traditional wisdom
             </p>
           </div>
 
@@ -101,21 +133,32 @@ const Product = () => {
                 </div>
                 <div className="p-6">
                   <div className="flex justify-between items-start mb-3">
-                    <h3 className="text-xl font-bold text-green-800">{product.name}</h3>
+                    <h3 className="text-xl font-bold text-green-800">
+                      {product.name}
+                    </h3>
                     <div className="flex items-center text-yellow-400">
                       <FaStar className="text-sm" />
-                      <span className="text-green-700 text-sm ml-1">{product.rating}</span>
+                      <span className="text-green-700 text-sm ml-1">
+                        {product.rating}
+                      </span>
                     </div>
                   </div>
+                  {/* product size  */}
+                  <span className="text-sm font-medium text-white bg-green-300 px-2 py-1 rounded-full">
+                    {product.size || "Size N/A"}
+                  </span>
                   <p className="text-green-600 mb-4">{product.desc}</p>
                   <div className="flex flex-wrap gap-2 mb-5">
                     {product.benefits.map((benefit, index) => (
-                      <span key={index} className="text-xs bg-green-100 text-green-700 px-3 py-1 rounded-full">
+                      <span
+                        key={index}
+                        className="text-xs bg-green-100 text-green-700 px-3 py-1 rounded-full"
+                      >
                         {benefit}
                       </span>
                     ))}
                   </div>
-                  <div className="flex  gap-3">
+                  <div className="flex gap-3">
                     <button
                       className="w-full bg-green-600 text-white py-3 rounded-lg font-semibold hover:bg-green-700 transition"
                       onClick={() => router.push(`${product.slug}`)}
@@ -124,7 +167,7 @@ const Product = () => {
                     </button>
                     <button
                       className="w-full bg-[#b88b1b] text-white py-3 rounded-lg font-semibold flex items-center justify-center gap-2 hover:bg-yellow-500 transition"
-                      onClick={() => alert(`Added ${product.name} to cart!`)}
+                      onClick={() => handleAddToCart(product)}
                     >
                       <FaShoppingCart /> Add to Cart
                     </button>

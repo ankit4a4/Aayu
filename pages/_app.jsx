@@ -2,7 +2,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useRouter } from "next/router";
 import { Toaster } from "react-hot-toast";
 
-import Layout from "../components/Layout";
+import Layout from "./Layout";
 
 import "../styles/globals.css";
 

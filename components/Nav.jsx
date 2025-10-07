@@ -54,10 +54,9 @@ const itemVariants = {
   visible: { x: 0, opacity: 1, scale: 1, transition: { type: "spring", stiffness: 120, damping: 14 } },
 };
 
-const Nav = () => {
+const Nav = ({cartCount}) => {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
-   const [cartCount, setCartCount] = useState(0);
 
   // Thin outline style for text and icons
   const thinOutline = {
@@ -69,19 +68,7 @@ const Nav = () => {
 
 
   // fetch the cart count from backend
-   useEffect(() => {
-    const fetchCart = async () => {
-      try {
-        const res = await api.get("/cart/get");
-        const items = res.data.cart?.items || [];
-        const totalCount = items.reduce((acc, item) => acc + item.quantity, 0);
-        setCartCount(totalCount);
-      } catch (err) {
-        console.error("Failed to fetch cart count", err);
-      }
-    };
-    fetchCart();
-  }, []);
+ 
 
   return (
     <>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import api from "../../utils/api";
 import toast from "react-hot-toast";
+import router from "next/router";
 
 export default function CartPage() {
   const [cartItems, setCartItems] = useState([]);
@@ -94,10 +95,12 @@ export default function CartPage() {
     toast.success(
       `🎉 Order confirmed! Total items: ${totalItems}, Total: ₹${totalPrice}`
     );
+    router.push("/checkout");
   };
 
   const continueShopping = () => {
     toast("🛍️ Continue shopping!");
+    router.push("/product");
   };
 
   return (
@@ -133,7 +136,7 @@ export default function CartPage() {
                           <div className="flex justify-between items-start">
                             <div>
                               <span className="text-xs font-medium text-white bg-[#53914c] px-2 py-1 rounded-full">
-                                {item.size || "Size N/A"}
+                                500mg
                               </span>
                               <h3 className="font-semibold text-gray-800 text-xl mb-2 mt-1">
                                 {item.name}
