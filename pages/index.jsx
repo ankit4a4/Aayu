@@ -17,9 +17,6 @@ import "slick-carousel/slick/slick-theme.css";
 
 const Home = () => {
   const router = useRouter();
-
-
-
   const settings = {
     dots: true,
     infinite: true,
@@ -134,13 +131,13 @@ const Home = () => {
           />
 
           <div className="absolute inset-0 flex flex-col justify-center text-white pl-3 pr-3 md:pl-[40%] py-12">
-            <h1 className="text-3xl md:mt-3 md:text-[5vw] font-[400] tracking-wide mb-12 drop-shadow-lg">
+            <h1 className="text-4xl md:mt-3 md:text-[5vw] font-[400] tracking-wide mb-6 md:mb-12 drop-shadow-lg">
               Our <span className="text-[#5b7d44]">Products</span>
             </h1>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:pr-[8vw]">
               {/* Product 1 */}
-              <div className="relative group bg-white rounded-2xl h-[50vh] md:h-[22vw] overflow-hidden shadow-2xl transform transition duration-500 hover:scale-105">
+              <div className="relative group bg-white rounded-2xl h-[40vh] md:h-[22vw] overflow-hidden shadow-2xl transform transition duration-500 hover:scale-105">
                 <Image
                   src={product1.src}
                   alt="Amla Candy Sweet"
@@ -160,7 +157,7 @@ const Home = () => {
               </div>
 
               {/* Product 2 */}
-              <div className="relative hidden md:block bg-white group h-[50vh] md:h-[22vw] rounded-2xl overflow-hidden shadow-2xl transform transition duration-500 hover:scale-105">
+              <div className="relative hidden md:block bg-white group h-[40vh] md:h-[22vw] rounded-2xl overflow-hidden shadow-2xl transform transition duration-500 hover:scale-105">
                 <Image
                   src={product2.src}
                   alt="Amla Candy Salted"
