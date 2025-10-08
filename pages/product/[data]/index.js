@@ -206,19 +206,19 @@ const SingleProductPage = () => {
           </div>
 
           {/* WhatsApp Button */}
-          <div className="mb-4 flex items-start gap-4 justify-start">
+          <div className="mb-4 flex items-start gap-4 justify-start items">
             <a
               href={`https://wa.me/7207257757?text=I am%20interested%20in%20buying%20the%20product%20${product.name}`}
               target="_blank"
-              className="px-8 py-4 md:py-[1vw] md:px-[4vw] bg-[#25D366] text-white font-semibold rounded-[1.1vw] md:text-[1.1vw] transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-green-400/30 flex items-center justify-center"
-            >
-              Chat on WhatsApp
-              <FaWhatsapp className="text-white text-xl md:text-[1.5vw] ml-2" />
+              className="w-full bg-green-600 text-center  text-white py-3 rounded-lg font-semibold hover:bg-green-700 transition"
+            > 
+              Chat WhatsApp
+              {/* <FaWhatsapp className="text-white text-xl hidden md:block md:text-[1.5vw] ml-2" /> */}
             </a>
 
             <button
              onClick={handleAddToCart}
-              className="px-8 py-4 md:py-[1vw] md:px-[4vw] bg-[#b88b1c] text-white font-semibold rounded-[1.1vw] md:text-[1.1vw] transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-[#b88b1c]/50 flex items-center justify-center gap-2"
+              className="w-full bg-[#b88b1b] text-white py-3 rounded-lg font-semibold flex items-center justify-center gap-2 hover:bg-yellow-500 transition"
             >
               <FaShoppingCart /> Add to Cart
             </button>

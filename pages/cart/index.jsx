@@ -178,7 +178,7 @@ export default function CartPage() {
                               </div>
                             </div>
 
-                            <div className="text-right mt-6 md:mt-0">
+                            <div className="text-right mt-6 md:mt-0 mr-2">
                               <span className="text-gray-600 text-sm">
                                 Item Total:
                               </span>
