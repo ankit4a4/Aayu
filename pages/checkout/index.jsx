@@ -101,7 +101,7 @@ const CheckoutPage = () => {
   if (loading) return <p className="text-center mt-10">Loading cart...</p>;
 
   return (
-    <div className="h-screen overflow-y-auto bg-gradient-to-br from-gray-50 to-gray-100 py-8 px-4">
+    <div className="h-screen md:py-8 py-24 overflow-y-auto bg-gradient-to-br from-gray-50 to-gray-100  px-4">
       <div className="max-w-6xl mx-auto">
         {/* 🟡 Header */}
         <div className="text-center mb-8">
