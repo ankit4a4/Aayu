@@ -16,7 +16,7 @@ const products = [
     img: product1.src,
     rating: 4.9,
     benefits: ["Rich in Vitamin C", "Immunity Booster", "Tasty & Healthy"],
-    price: 100, // Add actual product price
+    price: 285, // Add actual product price
     size:"500mg",
   },
   {
@@ -26,7 +26,7 @@ const products = [
     img: product2.src,
     rating: 4.8,
     benefits: ["Improves Digestion", "Natural Antioxidant", "Travel Friendly"],
-    price: 120, // Add actual product price
+    price: 285, // Add actual product price
     size:"500mg",
 
   },
@@ -144,9 +144,13 @@ const Product = () => {
                     </div>
                   </div>
                   {/* product size  */}
-                  <span className="text-sm font-medium text-white bg-green-300 px-2 py-1 rounded-full">
-                    {product.size || "Size N/A"}
-                  </span>
+                  
+                   <p className="text-lg font-semibold text-[#b88b1b] mb-2">
+    ₹{product.price}{" "}
+    <span className="text-sm text-green-700 font-normal">
+      ({product.size})
+    </span>
+  </p>
                   <p className="text-green-600 mb-4">{product.desc}</p>
                   <div className="flex flex-wrap gap-2 mb-5">
                     {product.benefits.map((benefit, index) => (

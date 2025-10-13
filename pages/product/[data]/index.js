@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import { FaStar, FaWhatsapp, FaShoppingCart } from "react-icons/fa";
+import { FaStar, FaWhatsapp, FaShoppingCart, FaTruck } from "react-icons/fa";
 import product1 from "../../../public/product/amlacandy1.jpg";
 import product2 from "../../../public/product/amlacandy2.jpg";
 import product3 from "../../../public/product/amlacandy3.jpg";
@@ -11,11 +11,14 @@ import secondProduct3 from "../../../public/product/salted-amla-candy3.jpg";
 import secondProduct4 from "../../../public/product/salted-amla-candy4.jpg";
 import api from "../../../utils/api";
 import toast from "react-hot-toast";
+
 const products = [
   {
     slug: "amla-candy-sweet",
     name: "Amla Candy Sweet",
     size: "500mg",
+    price: 285,
+    delivery: "Free Delivery within 3–5 business days across India.",
     desc: "Delicious sweet amla candy made with natural ingredients for daily wellness. Perfect snack for boosting immunity and maintaining energy throughout the day.",
     images: [product1.src, product2.src, product3.src, product4.src],
     rating: 4.9,
@@ -35,6 +38,8 @@ const products = [
     slug: "amla-candy-salted",
     name: "Amla Candy Salted",
     size: "500mg",
+    price: 285,
+    delivery: "₹49 Delivery charge | Free shipping on orders above ₹499.",
     desc: "Tangy salted amla candy that aids digestion and boosts immunity. A perfect snack with a tangy twist for all age groups.",
     images: [
       secondProduct1.src,
@@ -76,27 +81,26 @@ const SingleProductPage = () => {
 
   const otherProducts = products.filter((p) => p.slug !== slug);
 
-  // add to cart function 
+  // 🛒 Add to cart function
   const handleAddToCart = async () => {
-  try {
-    const response = await api.post("/cart/add", {
-      items: [
-        {
-          name: product.name,   // ✅ product name
-          quantity: 1,               // ✅ quantity
-          price: 100            // ✅ placeholder price, replace with real price later
-        }
-      ]
-    });
+    try {
+      const response = await api.post("/cart/add", {
+        items: [
+          {
+            name: product.name,
+            quantity: 1,
+            price: product.price,
+          },
+        ],
+      });
 
-    console.log("Cart updated:", response.data);
-    toast.success("Product added to cart!");
-   
-  } catch (error) {
-    console.error("Add to cart error:", error);
-    toast.error("Failed to add product to cart.");
-  }
-};
+      console.log("Cart updated:", response.data);
+      toast.success("Product added to cart!");
+    } catch (error) {
+      console.error("Add to cart error:", error);
+      toast.error("Failed to add product to cart.");
+    }
+  };
 
   return (
     <div className="h-screen overflow-y-auto">
@@ -132,7 +136,7 @@ const SingleProductPage = () => {
                 key={i}
                 src={img}
                 alt={`${product.name}-${i}`}
-                className={`md:w-24 m:h-24 w-14 h-14 object-cover border rounded cursor-pointer ${
+                className={`md:w-24 w-14 h-14 object-cover border rounded cursor-pointer ${
                   mainImage === img ? "border-green-700" : "border-gray-300"
                 }`}
                 onClick={() => setMainImage(img)}
@@ -145,17 +149,24 @@ const SingleProductPage = () => {
         <div>
           <h1 className="text-3xl font-bold text-green-800 mb-2">
             {product.name}
-             <span className="text-sm font-medium text-white bg-green-300 px-2 py-1 rounded-full ml-2">
-            {product.size || "Size N/A"}
-          </span>
+            <span className="text-sm font-medium text-white bg-green-300 px-2 py-1 rounded-full ml-2">
+              {product.size || "Size N/A"}
+            </span>
           </h1>
-         
+
+                {/* 💰 Price */}
+          <p className="text-2xl font-semibold text-green-900 mb-4">
+            ₹{product.price}
+          </p>
+
           <div className="flex items-center mb-4">
             <FaStar className="text-yellow-400 mr-1" />
             <span className="text-green-700">{product.rating}</span>
           </div>
-          
+
           <p className="text-green-600 mb-4">{product.desc}</p>
+
+    
 
           {/* Benefits */}
           <div className="flex flex-wrap gap-2 mb-4">
@@ -198,34 +209,38 @@ const SingleProductPage = () => {
           </div>
 
           {/* Storage */}
-          <div className="mb-6">
+          <div className="mb-4">
             <h3 className="font-semibold text-green-800 mb-2">
               Storage Instructions:
             </h3>
             <p className="text-green-700">{product.storage}</p>
           </div>
 
-          {/* WhatsApp Button */}
-          <div className="mb-4 flex items-start gap-4 justify-start items">
+          {/* 🚚 Delivery Info */}
+          <div className="mb-6">
+            <h3 className="font-semibold text-green-800 mb-2 flex items-center gap-2">
+              <FaTruck className="text-green-600" /> Delivery Information:
+            </h3>
+            <p className="text-green-700">{product.delivery}</p>
+          </div>
+
+          {/* Buttons */}
+          <div className="mb-4 flex items-start gap-4">
             <a
               href={`https://wa.me/7207257757?text=I am%20interested%20in%20buying%20the%20product%20${product.name}`}
               target="_blank"
-              className="w-full bg-green-600 text-center  text-white py-3 rounded-lg font-semibold hover:bg-green-700 transition"
-            > 
+              className="w-full bg-green-600 text-center text-white py-3 rounded-lg font-semibold hover:bg-green-700 transition"
+            >
               Chat WhatsApp
-              {/* <FaWhatsapp className="text-white text-xl hidden md:block md:text-[1.5vw] ml-2" /> */}
             </a>
 
             <button
-             onClick={handleAddToCart}
+              onClick={handleAddToCart}
               className="w-full bg-[#b88b1b] text-white py-3 rounded-lg font-semibold flex items-center justify-center gap-2 hover:bg-yellow-500 transition"
             >
               <FaShoppingCart /> Add to Cart
             </button>
           </div>
-
-          {/* Add to Cart Button */}
-          <div className="mb-6"></div>
 
           {/* Other Products */}
           {otherProducts.length > 0 && (

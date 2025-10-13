@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import api from "../../utils/api";
 import toast from "react-hot-toast";
+import { useRouter } from "next/router";
 
 const CheckoutPage = () => {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -15,8 +17,9 @@ const CheckoutPage = () => {
 
   const [cartItems, setCartItems] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [processing, setProcessing] = useState(false);
 
-  // Fetch cart items from backend
+  // Fetch cart items
   const fetchCart = async () => {
     try {
       const res = await api.get("/cart/get");
@@ -42,75 +45,115 @@ const CheckoutPage = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // Handle form submit and start Razorpay payment
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (cartItems.length === 0) {
-      toast.error("Your cart is empty!");
+  // Dynamically load Razorpay script
+  const loadRazorpayScript = () => {
+    return new Promise((resolve, reject) => {
+      const script = document.createElement("script");
+      script.src = "https://checkout.razorpay.com/v1/checkout.js";
+      script.onload = () => resolve(true);
+      script.onerror = () => reject(false);
+      document.body.appendChild(script);
+    });
+  };
+
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  if (cartItems.length === 0) {
+    toast.error("Your cart is empty!");
+    return;
+  }
+
+  setProcessing(true);
+
+  try {
+    // Load Razorpay script
+    const loaded = await loadRazorpayScript();
+    if (!loaded) {
+      toast.error("Failed to load Razorpay SDK. Please try again.");
+      setProcessing(false);
       return;
     }
 
-    try {
-      // 1️⃣ Create Razorpay order in backend
-      const res = await api.post("/order/checkout", {
-        userInfo: formData,
-        items: cartItems,
-      });
+    // Map postalcode to postalCode
+    const userInfo = { ...formData, postalCode: formData.postalcode };
 
-      const { razorpayOrder } = res.data;
+    // ✅ Map cart items to include productId
+    const itemsForCheckout = cartItems.map(item => ({
+      name: item.name,
+      size: item.size,
+      quantity: item.quantity,
+      price: item.price,
+      productId: item.productId || item._id, // ensure productId exists
+    }));
 
-      // 2️⃣ Open Razorpay checkout
-      const options = {
-        key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
-        amount: razorpayOrder.amount,
-        currency: razorpayOrder.currency,
-        name: "StyleCart",
-        description: "Order Payment",
-        order_id: razorpayOrder.id,
-        handler: async (response) => {
-          try {
-            // 3️⃣ Verify payment in backend
-            await api.post("/order/verify", {
-              razorpay_order_id: response.razorpay_order_id,
-              razorpay_payment_id: response.razorpay_payment_id,
-              razorpay_signature: response.razorpay_signature,
-            });
-            toast.success("Payment successful! Cart cleared.");
-            setCartItems([]);
-          } catch (err) {
-            console.error(err);
-            toast.error("Payment verification failed!");
-          }
-        },
-        prefill: {
-          name: formData.name,
-          email: formData.email,
-          contact: formData.phone,
-        },
-        theme: { color: "#53914c" },
-      };
+    // 1️⃣ Create Razorpay order in backend
+    const res = await api.post("/order/checkout", {
+      userInfo,
+      items: itemsForCheckout,
+    });
 
-      const rzp = new window.Razorpay(options);
-      rzp.open();
-    } catch (err) {
-      console.error(err);
-      toast.error("Failed to initiate payment!");
-    }
-  };
+    const { razorpayOrder } = res.data;
+
+    // 2️⃣ Open Razorpay checkout
+    const options = {
+      key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
+      amount: razorpayOrder.amount,
+      currency: razorpayOrder.currency,
+      name: "StyleCart",
+      description: "Order Payment",
+      order_id: razorpayOrder.id,
+      handler: async (response) => {
+        try {
+          // 3️⃣ Verify payment
+          await api.post("/order/verify", {
+            razorpay_order_id: response.razorpay_order_id,
+            razorpay_payment_id: response.razorpay_payment_id,
+            razorpay_signature: response.razorpay_signature,
+          });
+
+          toast.success("Payment successful! Cart cleared.");
+          setCartItems([]);
+          router.push("/thank-you");
+        } catch (err) {
+          console.error(err);
+          toast.error("Payment verification failed!");
+        } finally {
+          setProcessing(false);
+        }
+      },
+      prefill: {
+        name: formData.name,
+        email: formData.email,
+        contact: formData.phone,
+      },
+      theme: { color: "#53914c" },
+    };
+
+    const rzp = new window.Razorpay(options);
+    rzp.open();
+  } catch (err) {
+    console.error(err);
+    toast.error("Failed to initiate payment!");
+    setProcessing(false);
+  }
+};
+
 
   if (loading) return <p className="text-center mt-10">Loading cart...</p>;
 
   return (
-    <div className="h-screen md:py-8 py-24 overflow-y-auto bg-gradient-to-br from-gray-50 to-gray-100  px-4">
+    <div className="h-screen md:py-8 py-24 overflow-y-auto bg-gradient-to-br from-gray-50 to-gray-100 px-4">
       <div className="max-w-6xl mx-auto">
-        {/* 🟡 Header */}
+        {/* Header */}
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-[#53914c] mb-2">Complete Your Purchase</h1>
+          <h1 className="text-3xl font-bold text-[#53914c] mb-2">
+            Complete Your Purchase
+          </h1>
           <p className="text-gray-600">Secure checkout with encrypted payment</p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* 📝 Left - Billing Form */}
+          {/* Billing Form */}
           <div className="lg:col-span-2">
             <div className="bg-white rounded-2xl shadow-lg p-6 md:p-8">
               <div className="flex items-center mb-6">
@@ -219,15 +262,20 @@ const CheckoutPage = () => {
 
                 <button
                   type="submit"
-                  className="w-full mt-4 bg-[#53914c] text-white py-3 rounded-xl font-semibold hover:bg-[#447b3e] transition-all duration-200"
+                  disabled={processing}
+                  className={`w-full mt-4 py-3 rounded-xl font-semibold text-white transition-all duration-200 ${
+                    processing
+                      ? "bg-gray-400 cursor-not-allowed"
+                      : "bg-[#53914c] hover:bg-[#447b3e]"
+                  }`}
                 >
-                  Continue to Payment
+                  {processing ? "Processing..." : `Pay ₹${totalAmount} Now`}
                 </button>
               </form>
             </div>
           </div>
 
-          {/* 💰 Right - Order Summary */}
+          {/* Order Summary */}
           <div className="lg:col-span-1">
             <div className="bg-white rounded-2xl shadow-lg p-6 md:p-8 sticky top-8">
               <div className="flex items-center mb-6">
@@ -254,13 +302,6 @@ const CheckoutPage = () => {
                   <span className="text-[#b98820]">₹{totalAmount}</span>
                 </div>
               </div>
-
-              <button
-                onClick={handleSubmit}
-                className="w-full mt-5 bg-[#53914c] text-white py-4 rounded-xl font-semibold hover:bg-[#447b3e] transition-all duration-200"
-              >
-                Pay ₹{totalAmount} Now
-              </button>
             </div>
           </div>
         </div>
