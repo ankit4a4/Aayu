@@ -5,6 +5,7 @@ import img from "../../public/productPageImage/banner.webp";
 import { useRouter } from "next/navigation";
 import product1 from "../../public/product/amlacandy1.jpg";
 import product2 from "../../public/product/salted-amla-candy.jpg";
+import product3 from "../../public/product/mix-fruit.png";
 import api from "../../utils/api";
 import toast from "react-hot-toast";
 
@@ -16,7 +17,7 @@ const products = [
     img: product1.src,
     rating: 4.9,
     benefits: ["Rich in Vitamin C", "Immunity Booster", "Tasty & Healthy"],
-    price: 100, // Add actual product price
+    price: 285, // Add actual product price
     size:"500mg",
   },
   {
@@ -26,8 +27,19 @@ const products = [
     img: product2.src,
     rating: 4.8,
     benefits: ["Improves Digestion", "Natural Antioxidant", "Travel Friendly"],
-    price: 120, // Add actual product price
+    price: 285, // Add actual product price
     size:"500mg",
+
+  },
+  {
+    name: "MIX FRUIT SWEETS",
+    slug: "product/mix-fruit-sweets",
+    desc: "Tangy salted amla candy that aids digestion and boosts immunity.",
+    img: product3.src,
+    rating: 4.8,
+    benefits: ["Improves Digestion", "Natural Antioxidant", "Travel Friendly"],
+    price: 795, 
+    size:"1Kg",
 
   },
 ];
@@ -144,9 +156,13 @@ const Product = () => {
                     </div>
                   </div>
                   {/* product size  */}
-                  <span className="text-sm font-medium text-white bg-green-300 px-2 py-1 rounded-full">
-                    {product.size || "Size N/A"}
-                  </span>
+                  
+                   <p className="text-lg font-semibold text-[#b88b1b] mb-2">
+    ₹{product.price}{" "}
+    <span className="text-sm text-green-700 font-normal">
+      ({product.size})
+    </span>
+  </p>
                   <p className="text-green-600 mb-4">{product.desc}</p>
                   <div className="flex flex-wrap gap-2 mb-5">
                     {product.benefits.map((benefit, index) => (

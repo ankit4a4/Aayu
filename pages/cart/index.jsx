@@ -91,12 +91,32 @@ export default function CartPage() {
     0
   );
 
-  const handleCheckout = () => {
-    toast.success(
-      `🎉 Order confirmed! Total items: ${totalItems}, Total: ₹${totalPrice}`
-    );
-    router.push("/checkout");
-  };
+const handleCheckout = () => {
+  if (cartItems.length === 0) {
+    toast.error("Your cart is empty!");
+    return;
+  }
+
+  // Ensure each item has productId
+  const itemsWithProductId = cartItems.map((item) => ({
+    name: item.name,
+    size: item.size,
+    quantity: item.quantity,
+    price: item.price,
+    productId: item.productId || item._id, // fallback to _id if productId missing
+  }));
+
+  // Store items in sessionStorage for checkout page
+  sessionStorage.setItem("checkoutItems", JSON.stringify(itemsWithProductId));
+
+  toast.success(
+    `🎉 Order confirmed! Total items: ${totalItems}, Total: ₹${totalPrice}`
+  );
+
+  // Redirect to checkout
+  router.push("/checkout");
+};
+
 
   const continueShopping = () => {
     toast("🛍️ Continue shopping!");
