@@ -5,6 +5,7 @@ import img from "../../public/productPageImage/banner.webp";
 import { useRouter } from "next/navigation";
 import product1 from "../../public/product/amlacandy1.jpg";
 import product2 from "../../public/product/salted-amla-candy.jpg";
+import product3 from "../../public/product/mix-fruit.png";
 import api from "../../utils/api";
 import toast from "react-hot-toast";
 
@@ -28,6 +29,17 @@ const products = [
     benefits: ["Improves Digestion", "Natural Antioxidant", "Travel Friendly"],
     price: 285, // Add actual product price
     size:"500mg",
+
+  },
+  {
+    name: "MIX FRUIT SWEETS",
+    slug: "product/mix-fruit-sweets",
+    desc: "Tangy salted amla candy that aids digestion and boosts immunity.",
+    img: product3.src,
+    rating: 4.8,
+    benefits: ["Improves Digestion", "Natural Antioxidant", "Travel Friendly"],
+    price: 795, 
+    size:"1Kg",
 
   },
 ];

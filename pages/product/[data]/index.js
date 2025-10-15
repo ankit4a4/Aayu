@@ -9,6 +9,7 @@ import secondProduct1 from "../../../public/product/salted-amla-candy.jpg";
 import secondProduct2 from "../../../public/product/salted-amla-candy1.webp";
 import secondProduct3 from "../../../public/product/salted-amla-candy3.jpg";
 import secondProduct4 from "../../../public/product/salted-amla-candy4.jpg";
+import thirdproduct from "../../../public/product/mix-fruit.png";
 import api from "../../../utils/api";
 import toast from "react-hot-toast";
 
@@ -50,6 +51,30 @@ const products = [
     rating: 4.8,
     benefits: ["Improves Digestion", "Natural Antioxidant", "Travel Friendly"],
     ingredients: ["Amla (Indian Gooseberry)", "Salt", "Black Salt", "Spices"],
+    usage: "Consume 1-2 pieces daily after meals or as a healthy snack.",
+    storage: "Keep in airtight container in a cool, dry place. Avoid moisture.",
+    healthBenefits: [
+      "Enhances digestion naturally",
+      "Boosts immunity and energy",
+      "Acts as natural detoxifier",
+    ],
+  },
+  {
+    slug: "mix-fruit-sweets",
+    name: "MIX FRUIT SWEETS",
+    size: "1Kg",
+    price: 795,
+    delivery: "₹49 Delivery charge | Free shipping on orders above ₹499.",
+    desc: "Tangy salted amla candy that aids digestion and boosts immunity. A perfect snack with a tangy twist for all age groups.",
+    images: [
+      thirdproduct.src,
+      thirdproduct.src,
+      thirdproduct.src,
+      thirdproduct.src,
+    ],
+    rating: 4.8,
+    benefits: ["Improves Digestion", "Natural Antioxidant", "Travel Friendly"],
+    ingredients: ["Amla Laddoo","Mael Barfi","Mango Barfi","Amla Barfi (Mix Dry Fruits)","Guava Barfi","Amla Barfi"],
     usage: "Consume 1-2 pieces daily after meals or as a healthy snack.",
     storage: "Keep in airtight container in a cool, dry place. Avoid moisture.",
     healthBenefits: [
