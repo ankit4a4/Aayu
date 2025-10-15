@@ -2,9 +2,9 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  output: 'export', // ✅ ensures static export for cPanel
+  output: 'export', 
   images: {
-    unoptimized: true, // ✅ disables Image Optimization API (required for cPanel)
+    unoptimized: true, 
     remotePatterns: [
       {
         protocol: 'https',

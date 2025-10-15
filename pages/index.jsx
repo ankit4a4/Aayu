@@ -144,7 +144,7 @@ const Home = () => {
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-contain transform group-hover:scale-110 transition duration-700"
-                  onClick={() => router.push("/product/amla-candy-sweet")}
+                  onClick={() => router.push("/amla-candy-sweet")}
                 />
                 <div className="absolute bottom-0 left-0 right-0 p-2 md:p-6 z-20">
                   <div className="backdrop-blur-md bg-white/50 border md:p-[1.1vw] border-white/20 rounded-xl p-4">
@@ -164,7 +164,7 @@ const Home = () => {
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-contain transform group-hover:scale-110 transition duration-700"
-                  onClick={() => router.push("/product/amla-candy-salted")}
+                  onClick={() => router.push("/amla-candy-salted")}
                 />
                 <div className="absolute bottom-0 left-0 right-0 p-2 md:p-6 z-20">
                   <div className="backdrop-blur-md bg-white/50 border md:p-[1.1vw] border-white/20 rounded-xl p-4">

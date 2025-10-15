@@ -12,7 +12,7 @@ import toast from "react-hot-toast";
 const products = [
   {
     name: "Amla Candy Sweet",
-    slug: "product/amla-candy-sweet",
+    slug: "amla-candy-sweet",
     desc: "Delicious sweet amla candy made with natural ingredients for daily wellness.",
     img: product1.src,
     rating: 4.9,
@@ -22,7 +22,7 @@ const products = [
   },
   {
     name: "Amla Candy Salted",
-    slug: "product/amla-candy-salted",
+    slug: "amla-candy-salted",
     desc: "Tangy salted amla candy that aids digestion and boosts immunity.",
     img: product2.src,
     rating: 4.8,
@@ -33,7 +33,7 @@ const products = [
   },
   {
     name: "MIX FRUIT SWEETS",
-    slug: "product/mix-fruit-sweets",
+    slug: "mix-fruit-sweets",
     desc: "Tangy salted amla candy that aids digestion and boosts immunity.",
     img: product3.src,
     rating: 4.8,
